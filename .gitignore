@@ -15,7 +15,7 @@ obj/
 *.suo
 
 # Angular
-node_modules/
+**/node_modules
 dist/
 .angular/
 npm-debug.log
