@@ -1,0 +1,60 @@
+﻿.card-upper {
+    position: absolute;
+    z-index: 2;
+    top: 70%;
+    background-color: #171B1D;
+    padding: 1rem;
+    color: #d7d9d9;
+}
+.bg-color-card {
+    background-color: #212529;
+    z-index: 1;
+}
+.card-img {
+    z-index: 1;
+}
+
+/*.card:hover {
+    animation: none; 5s ease-in-out;
+}*/
+
+.card.can-hover {/*if using .card:hover then Conflicting with Scroll Animation
+                 //because .scroll-element.in-view or out-view be called too.*/
+    animation: 50s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut{
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+    /* Khi phần tử xuất hiện trong viewport */
+.scroll-element.in-view:not(.can-hover) {
+    animation: fadeIn 2s ease-out forwards;
+    animation-play-state: running;
+}
+
+    /* Khi phần tử xuất hiện trong viewport */
+.scroll-element.out-view:not(.can-hover) {
+    animation: fadeOut 2s ease-out forwards; /* Chạy fadeOut khi có lớp out-view */
+    animation-play-state: running;
+}

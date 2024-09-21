@@ -1,0 +1,47 @@
+﻿.bg-card {
+    margin-left: 1rem;
+}
+.card-body {
+    box-sizing: border-box;
+    width: 5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Áp dụng animation cho phần tử */
+.scroll-element {
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+    animation-play-state: paused;
+}
+
+/* Khi phần tử xuất hiện trong viewport */
+.scroll-element.in-view {
+    animation-play-state: running;
+}
+
+/* Khi phần tử xuất hiện trong viewport */
+    .scroll-element.out-view {
+        animation: fadeOut 2s ease-out forwards; /* Chạy fadeOut khi có lớp out-view */
+        animation-play-state: running;
+    }

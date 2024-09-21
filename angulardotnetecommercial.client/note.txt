@@ -1,0 +1,32 @@
+ ng add ngx-boostrap=> embedded bootstrap
+ 2. font awesome 
+npm install @fortawesome/angular-fontawesome
+npm install @fortawesome/fontawesome-svg-core
+npm install @fortawesome/free-brands-svg-icons
+npm install @fortawesome/free-regular-svg-icons
+npm install @fortawesome/free-solid-svg-icons
+
+open the app.module.ts and import the FontAwesomeModule
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule
+  ],
+
+
+  import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+  Next, we create a variable name called faCoffee and assign the icon that we imported to the variable so can use it in the app.component.html. If we don’t do that, we can’t use it:
+
+faCoffee = faCoffee;
+
+
+  <div>
+    <fa-icon ="faCoffee"></fa-icon>
+</div>
+
+
+3. ng g c nav-bar => create nab bar
+
+4. npm install jquery --save
+add   "node_modules/jquery/dist/jquery.min.js" to script in angular.json
