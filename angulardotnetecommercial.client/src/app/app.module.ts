@@ -3,28 +3,31 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShipperParallaxComponent } from './shipper-parallax/shipper-parallax.component';
 import { CardRotateComponent } from './card-rotate/card-rotate.component';
 import { CardFadeinComponent } from './card-fadein/card-fadein.component';
-import { CardPricingComponent } from './card-pricing/card-pricing.component'
+import { CardPricingComponent } from './card-pricing/card-pricing.component';
+import { CardSliderMenuComponent } from './card-slider-menu/card-slider-menu.component'
+import { CoreModule } from './core/core.module';
+import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     ShipperParallaxComponent,
     CardRotateComponent,
     CardFadeinComponent,
-    CardPricingComponent
+    CardPricingComponent,
+    CardSliderMenuComponent,
+    ShopComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule,
+    BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-      BrowserAnimationsModule,
-     FontAwesomeModule
+    BrowserAnimationsModule,
+    CoreModule,
   ],
   providers: [],
     bootstrap: [AppComponent]

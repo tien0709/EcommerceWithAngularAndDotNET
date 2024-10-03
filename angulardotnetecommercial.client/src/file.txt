@@ -1,0 +1,2 @@
+npm install @videogular/ngx-videogular
+npm install @types/core-js --save-dev

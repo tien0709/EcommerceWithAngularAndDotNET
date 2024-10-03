@@ -22,7 +22,7 @@ table {
     box-sizing: border-box;
     color: #d7d9d9;
 }
-.video-background-holder {
+.video-holder {
     position: relative;
     background-color: black;
     height: calc(100vh - 72px);
@@ -31,7 +31,7 @@ table {
     overflow: hidden;
 }
 
-.video-background-holder video {
+.video-holder video {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -44,12 +44,12 @@ table {
         transform: translateX(-50%) translateY(-50%);
     }
 
-.video-background-content {
+.video-content {
     position: absolute;
     z-index: 3;
     background-color: transparent;
 }
-.video-background-overlay {
+.video-overlay {
     position: absolute;
     top: 0;
     left: 0;

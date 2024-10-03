@@ -4,15 +4,14 @@
     <app-nav-bar></app-nav-bar>
     <!-- end navbar -->
     <!-- Background video -->
-    <div class="video-background-holder">
-        <div class="video-background-overlay"></div>
-        <video loading="lazy" preload="none" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-            <source src="/videos/background.mp4" type="video/mp4">
+    <div class="video-holder">
+        <div class="video-overlay"></div>
+        <video preload="none" playsinline autoplay muted loop poster="/images/poster.png" src="/videos/background.mp4" type="video/mp4" loading="lazy">
         </video>
-        <div class="video-background-content newcontainer h-100">
+        <div class="video-content newcontainer h-100">
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100">
-                    <p class="welcom-text">Welcome</p>
+                    <p class="welcom-text">Welcome </p>
                     <h1 class="slogan text-white">WE HAVE ANYTHING YOU NEED</h1>
                     <p class="state">Ordering your Goods is quick and easy with our website.</p>
                     <div class="d-flex justify-content-center mt-5">
@@ -87,125 +86,126 @@
         </div>
         <div class="w-100">
             <div class="row">
-                <div class="col-md-4">
-                    <app-card-fadein [name]="'Iphone 10'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip10.png'"></app-card-fadein>
+                <div *ngFor="let product of products">
+                    <div class="col-md-4">
+                        <app-card-fadein [image]="product.ImageUrl"
+                                         [name]="product.Name"
+                                         [description]="product.Description"></app-card-fadein>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <app-card-fadein [name]="'Iphone 11'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip11.png'"></app-card-fadein>
-                </div>
-                <div class="col-md-4">
-                    <app-card-fadein [name]="'Iphone 12'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip12.png'"></app-card-fadein>
-                </div>
-
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <app-card-fadein [name]="'Iphone 10'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip10.png'"></app-card-fadein>
-                </div>
-                <div class="col-md-4">
-                    <app-card-fadein [name]="'Iphone 11'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip11.png'"></app-card-fadein>
-                </div>
-                <div class="col-md-4">
-                    <app-card-fadein [name]="'Iphone 12'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip12.png'"></app-card-fadein>
-                </div>
-
+            <div>
+                <div class="btn btn-warning my-3">More phone</div>
             </div>
         </div>
-        <div>
-            <div class="btn btn-warning my-3">More phone</div>
+        <!--End Hot Item-->
+        <!--Pricing -->
+        <div class="d-flex flex-column py-5 bg-color-custom  justify-items-center align-items-center">
+            <div class=""><p class="h2 text-white">Menu Pricing</p></div>
+            <div class="w-75">
+                <p>
+                    E Store dẫn đầu thị trường điện thoại di động và không ngừng mang đến nhiều hơn
+                    cả điện thoại. Khám phá các tùy chọn sản phẩm mới nhất của chúng tôi với các dòng điện thoại thông minh,
+                    máy tính bảng, phụ kiện và nhiều hơn nữa!
+                </p>
+            </div>
+            <div class="w-100">
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-card-pricing [name]="'Iphone 10'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip10.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-pricing>
+                    </div>
+                    <div class="col-md-6">
+                        <app-card-pricing [name]="'Iphone 11'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip11.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-pricing>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-card-pricing [name]="'Iphone 10'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip10.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-pricing>
+                    </div>
+                    <div class="col-md-6">
+                        <app-card-pricing [name]="'Iphone 11'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip11.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-pricing>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-card-pricing [name]="'Iphone 10'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip10.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-pricing>
+                    </div>
+                    <div class="col-md-6">
+                        <app-card-pricing [name]="'Iphone 11'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip11.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-pricing>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--End Pricing-->
+        <!-- Menu Slider-->
+        <div class="menu-slider">
+            <section class="menu-slider-category d-flex align-items-center justify-content-center">
+                <ul class="d-flex">
+                    <li><button>Smartphone</button></li>
+                    <li><button>Smart Watch</button></li>
+                    <li><button>Pad</button></li>
+                </ul>
+            </section>
+            <section class="menu-slider-products d-flex">
+                <div class="col-md-4">
+                    <app-card-slider-menu [name]="'Iphone 10'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip10.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-slider-menu>
+                </div>
+                <div class="col-md-4">
+                    <app-card-slider-menu [name]="'Iphone 11'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip11.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-slider-menu>
+                </div>
+                <div class="col-md-4">
+                    <app-card-slider-menu [name]="'Iphone 12'"
+                                          [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                          [srcImg]="'/images/ip12.png'"
+                                          [price]="'$500'" loading="lazy"></app-card-slider-menu>
+                </div>
+            </section>
+        </div>
+        <!-- End Menu Slider-->
+        <app-shop></app-shop>
+        <p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+        <table *ngIf="forecasts">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Temp. (C)</th>
+                    <th>Temp. (F)</th>
+                    <th>Summary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let forecast of forecasts">
+                    <td>{{ forecast.date }}</td>
+                    <td>{{ forecast.temperatureC }}</td>
+                    <td>{{ forecast.temperatureF }}</td>
+                    <td>{{ forecast.summary }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <!--End Hot Item-->
-    <!--Pricing -->
-    <div class="d-flex flex-column py-5 bg-color-custom  justify-items-center align-items-center">
-        <div class=""><p class="h2 text-white">Menu Pricing</p></div>
-        <div class="w-75">
-            <p>
-                E Store dẫn đầu thị trường điện thoại di động và không ngừng mang đến nhiều hơn
-                cả điện thoại. Khám phá các tùy chọn sản phẩm mới nhất của chúng tôi với các dòng điện thoại thông minh,
-                máy tính bảng, phụ kiện và nhiều hơn nữa!
-            </p>
-        </div>
-        <div class="w-100">
-            <div class="row">
-                <div class="col-md-6">
-                    <app-card-pricing [name]="'Iphone 10'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip10.png'"
-                                     [price] ="'$500'"></app-card-pricing>
-                </div>
-                <div class="col-md-6">
-                    <app-card-pricing [name]="'Iphone 11'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip11.png'"
-                                     [price] ="'$500'"></app-card-pricing>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <app-card-pricing [name]="'Iphone 10'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip10.png'"
-                                     [price] ="'$500'"></app-card-pricing>
-                </div>
-                <div class="col-md-6">
-                    <app-card-pricing [name]="'Iphone 11'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip11.png'"
-                                     [price] ="'$500'"></app-card-pricing>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <app-card-pricing [name]="'Iphone 10'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip10.png'"
-                                     [price] ="'$500'"></app-card-pricing>
-                </div>
-                <div class="col-md-6">
-                    <app-card-pricing [name]="'Iphone 11'"
-                                     [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                     [srcImg]="'/images/ip11.png'"
-                                     [price] ="'$500'"></app-card-pricing>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--End Pricing-->
-
-
-    <p *ngIf="!forecasts"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
-    <table *ngIf="forecasts">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let forecast of forecasts">
-                <td>{{ forecast.date }}</td>
-                <td>{{ forecast.temperatureC }}</td>
-                <td>{{ forecast.temperatureF }}</td>
-                <td>{{ forecast.summary }}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>

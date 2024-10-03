@@ -3,9 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularDotNetEcommercial.Server", "AngularDotNetEcommercial.Server\AngularDotNetEcommercial.Server.csproj", "{A3A59869-7858-40E8-949F-3B060241ADC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularDotNetEcommercial.Server", "AngularDotNetEcommercial.Server\AngularDotNetEcommercial.Server.csproj", "{A3A59869-7858-40E8-949F-3B060241ADC0}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "angulardotnetecommercial.client", "angulardotnetecommercial.client\angulardotnetecommercial.client.esproj", "{FC031780-5822-4B31-B70B-18B3AD38433C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{333C7644-8EA1-48C7-B9D4-F1707FE83732}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{D069CC0B-F248-4F41-9240-1D496E376A7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{FD7F1F14-9357-4E26-A8FE-B2F989A16B9F}"
+	ProjectSection(SolutionItems) = preProject
+		angulardotnetecommercial.client\note.txt = angulardotnetecommercial.client\note.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{3481FEE2-67B0-4D8F-810D-F1E656898CA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,15 +28,29 @@ Global
 		{A3A59869-7858-40E8-949F-3B060241ADC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3A59869-7858-40E8-949F-3B060241ADC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3A59869-7858-40E8-949F-3B060241ADC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FC031780-5822-4B31-B70B-18B3AD38433C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC031780-5822-4B31-B70B-18B3AD38433C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC031780-5822-4B31-B70B-18B3AD38433C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{FC031780-5822-4B31-B70B-18B3AD38433C}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{FC031780-5822-4B31-B70B-18B3AD38433C}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{FC031780-5822-4B31-B70B-18B3AD38433C}.Debug|Any CPU.Deploy.0 = Release|Any CPU
 		{FC031780-5822-4B31-B70B-18B3AD38433C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC031780-5822-4B31-B70B-18B3AD38433C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC031780-5822-4B31-B70B-18B3AD38433C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{333C7644-8EA1-48C7-B9D4-F1707FE83732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{333C7644-8EA1-48C7-B9D4-F1707FE83732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{333C7644-8EA1-48C7-B9D4-F1707FE83732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{333C7644-8EA1-48C7-B9D4-F1707FE83732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D069CC0B-F248-4F41-9240-1D496E376A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D069CC0B-F248-4F41-9240-1D496E376A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D069CC0B-F248-4F41-9240-1D496E376A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D069CC0B-F248-4F41-9240-1D496E376A7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A3A59869-7858-40E8-949F-3B060241ADC0} = {FD7F1F14-9357-4E26-A8FE-B2F989A16B9F}
+		{FC031780-5822-4B31-B70B-18B3AD38433C} = {3481FEE2-67B0-4D8F-810D-F1E656898CA9}
+		{333C7644-8EA1-48C7-B9D4-F1707FE83732} = {FD7F1F14-9357-4E26-A8FE-B2F989A16B9F}
+		{D069CC0B-F248-4F41-9240-1D496E376A7A} = {FD7F1F14-9357-4E26-A8FE-B2F989A16B9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AABDDED6-F833-45F1-BC52-26D641E71D89}
