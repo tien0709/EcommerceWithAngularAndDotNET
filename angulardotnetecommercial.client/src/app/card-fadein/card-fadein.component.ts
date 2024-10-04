@@ -1,4 +1,6 @@
-﻿import { Component, Input, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+﻿import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { IPagination } from '../shared/models/Pagination';
 
 @Component({
     selector: 'app-card-fadein',
@@ -6,11 +8,10 @@
     styleUrls: ['./card-fadein.component.css']
 })
 export class CardFadeinComponent implements OnInit {
-    @ViewChild('fadeElement') card: ElementRef|null=null;
-    @Input() name: string = "";
-    @Input() srcImg: string = "";
-    @Input() description: string = "";
-
+    @ViewChild('fadeElement') card: ElementRef | null = null;
+    @Input() name: string = '';
+    @Input() description: string = '';
+    @Input() image: string = '';
     constructor() { }
 
     ngOnInit(): void {
