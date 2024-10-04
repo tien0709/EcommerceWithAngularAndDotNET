@@ -1,12 +1,12 @@
 export interface Iproduct {
-    Id: string;
-    CategoryId: string;
-    Price: string;
-    Description: string;
-    Quantity: number;
-    DiscountId: string[];
+    id: string;
+    categoryId: string;
+    price: number;
+    description: string;
+    quantity: number;
+    discountId: string[];
     //CreatedAt: string;
     //ModifiedAt: string;
-    ImageUrl: string;
-    Name: string;
+    imageUrl: string;
+    name: string;
 }

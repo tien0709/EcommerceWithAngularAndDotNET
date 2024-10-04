@@ -35,10 +35,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwaggerDocumention();
 }
-app.UseCors(builder =>
-        builder.WithOrigins("http://localhost:4200")
-               .AllowAnyHeader()
-               .AllowAnyMethod());
+//app.UseCors(builder =>
+//        builder.WithOrigins("http://localhost:4200")
+//               .AllowAnyHeader()
+//               .AllowAnyMethod());
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 app.UseHttpsRedirection();

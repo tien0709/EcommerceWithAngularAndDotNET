@@ -24,8 +24,8 @@ export class CardPricingComponent {
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = (centerY - y) / centerY * 15;
-            const rotateY = (x - centerX) / centerX * 15;
+            const rotateX = (centerY - y) / centerY * 20;
+            const rotateY = (x - centerX) / centerX * 20;
 
             this.renderer.setStyle(cardElement, 'transform', `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
         });

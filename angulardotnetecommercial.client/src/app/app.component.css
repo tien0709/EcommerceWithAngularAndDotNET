@@ -114,3 +114,21 @@ table {
     background-color: #212529;
 }
 
+.menu-slider-category button {
+    background-color: #212529;
+    color: #fac564;
+    width: 9rem;
+    border: 0.1rem solid #fac564;
+}
+
+    .menu-slider-category button:hover {
+        background-color: #fac564;
+        color: white;
+        width: 9rem;
+        border: 0.1rem solid #fac564;
+    }
+
+.menu-slider {
+    margin-bottom: 10rem;
+}
+

@@ -38,9 +38,9 @@ export class AppComponent implements OnInit {
     );
     }
     getProducts() {
-        this.http.get<IPagination>('https://localhost:5221/api/products').subscribe({
-            next: (response: IPagination) => {
-                this.products = response.data;
+        this.http.get<Iproduct[]>('/api/products').subscribe({
+            next: (response: Iproduct[]) => {
+                this.products = response;
             },
             error: (error) => {
                 console.log(error);

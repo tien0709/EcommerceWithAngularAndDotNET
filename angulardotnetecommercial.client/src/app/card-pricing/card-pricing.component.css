@@ -18,10 +18,10 @@
     animation: 50s ease-in-out;
 }
 .title {
-    border-bottom: 0.1rem solid yellow;
+    border-bottom: 0.1rem solid #fac564;
     color: #d7d9d9;
 }
 
-.card-price{
-    color: yellow;
+.card-price {
+    color: #fac564;
 }
