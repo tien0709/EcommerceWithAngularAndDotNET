@@ -1,2 +1,4 @@
 npm install @videogular/ngx-videogular
 npm install @types/core-js --save-dev
+
+PS C:\Users\acer\source\repos\AngularDotNetEcommercial\angulardotnetecommercial.client\src> ng generate environments

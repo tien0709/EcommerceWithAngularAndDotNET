@@ -1,0 +1,252 @@
+﻿
+
+    <div class="video-holder d-flex justify-content-center">
+        <div class="video-overlay"></div>
+        <video preload="none" playsinline autoplay muted loop poster="/images/poster.png" src="/videos/background.mp4" type="video/mp4" loading="lazy">
+        </video>
+        <div class="video-content h-100">
+            <div class="d-flex h-100 text-center align-items-center video-text"lazyLoadObserver [threshold]="0.1">
+                <div class="w-100">
+                    <p class="welcom-text">Welcome </p>
+                    <h1 class="slogan text-white">WE HAVE ANYTHING YOU NEED</h1>
+                    <p class="state">Ordering your Goods is quick and easy with our website.</p>
+                    <div class="d-flex justify-content-center mt-5">
+                        <button class="btn btn-warning mx-2">Read Blog</button>
+                        <button class="btn btn-secondary mx-2">View Menu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex introduce">
+        <div class="w-50 px-5">
+            <img src="images/home_ecomercial.png" aria-label="Bootstrap" />
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="h1 text-white">Welcome to <span class="store-name">E-Store</span></div>
+            <div class="w-75">
+                Here, we offer a wide range of products from fashion, electronics, and home appliances to cosmetics,
+                ensuring quality and competitive prices. With a flexible 7-day return policy and a commitment to genuine products,
+                E-Store always prioritizes customer satisfaction. Experience convenient and safe shopping with us today!
+            </div>
+        </div>
+    </div>
+    <div class="d-flex bg-image align-items-center" #banner>
+        <div class="text-center info">
+            <p class="text-item text-white">000 (000) 123 4567</p>
+            <p class="text-item">Contact us if you have any questions</p>
+
+            <p class="text-item text-white">506 Roy Alley 80202</p>
+            <p class="text-item">Colorado, Denver</p>
+
+            <p class="text-item text-white">Open Monday-Friday</p>
+            <p class="text-item">8:00am - 9:00pm</p>
+        </div>
+        @defer (on viewport(banner)) {
+        <app-shipper-parallax></app-shipper-parallax>
+        }
+    </div>
+    <div class="d-flex flex-column py-2 bg-color-custom justify-items-center align-items-center">
+        <div class=""><p class="h2 text-white">Our Services</p></div>
+        <div class="w-75">
+            <p>
+                E Store dẫn đầu thị trường điện thoại di động và không ngừng mang đến nhiều hơn
+                cả điện thoại. Khám phá các tùy chọn sản phẩm mới nhất của chúng tôi với các dòng điện thoại thông minh,
+                máy tính bảng, phụ kiện và nhiều hơn nữa!
+            </p>
+        </div>
+        <div class="group-card row" #cardrotate lazyLoadObserver [threshold]="0.1">
+            @defer (on viewport(cardrotate)) {
+            <div class="col-lg-4 col-md-6 mt-5">
+                <app-card-rotate class="ml-auto" [name]="'Iphone 10'"
+                                 [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                 [srcImg]="'/images/ip10.png'"></app-card-rotate>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-5">
+                <app-card-rotate class="ml-auto" [name]="'Iphone 11'"
+                                 [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                 [srcImg]="'/images/ip11.png'"></app-card-rotate>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-5">
+                <app-card-rotate class="ml-auto" [name]="'Iphone 12'"
+                                 [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                 [srcImg]="'/images/ip12.png'"></app-card-rotate>
+               
+            </div>
+            }
+        </div>
+    </div>
+    <div class="d-flex flex-column pt-5 bg-color-custom  justify-items-center align-items-center">
+        <div class=""><p class="h2 text-white">Hot Phone</p></div>
+        <div class="w-75">
+            <p>
+                E Store dẫn đầu thị trường điện thoại di động và không ngừng mang đến nhiều hơn
+                cả điện thoại. Khám phá các tùy chọn sản phẩm mới nhất của chúng tôi với các dòng điện thoại thông minh,
+                máy tính bảng, phụ kiện và nhiều hơn nữa!
+            </p>
+        </div>
+        <div class="my-3 hotphone w-100 px-5" lazyLoadObserver [threshold]="0.1">
+            <app-card-fadein class="my-2 row"></app-card-fadein>
+            <div class="d-flex justify-content-center my-5">
+                <button class="btn btn-warning">More phone</button>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-column py-5 bg-color-custom  justify-items-center align-items-center">
+        <div class=""><p class="h2 text-white">Menu Pricing</p></div>
+        <div class="w-75">
+            <p>
+                E Store dẫn đầu thị trường điện thoại di động và không ngừng mang đến nhiều hơn
+                cả điện thoại. Khám phá các tùy chọn sản phẩm mới nhất của chúng tôi với các dòng điện thoại thông minh,
+                máy tính bảng, phụ kiện và nhiều hơn nữa!
+            </p>
+        </div>
+        <div class="w-100 group-card-pricing" #cardpricing lazyLoadObserver [threshold]="0.1">
+            @defer (on viewport(cardpricing)) {
+            <div class="row">
+                <div class="col-md-6">
+                    <app-card-pricing [name]="'Iphone 10'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip10.png'"
+                                      [price]="'$500'" loading="lazy"></app-card-pricing>
+                </div>
+                <div class="col-md-6">
+                    <app-card-pricing [name]="'Iphone 11'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip11.png'"
+                                      [price]="'$500'" loading="lazy"></app-card-pricing>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <app-card-pricing [name]="'Iphone 10'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip10.png'"
+                                      [price]="'$500'" loading="lazy"></app-card-pricing>
+                </div>
+                <div class="col-md-6">
+                    <app-card-pricing [name]="'Iphone 11'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip11.png'"
+                                      [price]="'$500'" loading="lazy"></app-card-pricing>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <app-card-pricing [name]="'Iphone 10'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip10.png'"
+                                      [price]="'$500'" loading="lazy"></app-card-pricing>
+                </div>
+                <div class="col-md-6">
+                    <app-card-pricing [name]="'Iphone 11'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip11.png'"
+                                      [price]="'$500'" loading="lazy"></app-card-pricing>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="banner w-100" #banner_2>
+        @defer (on viewport(banner_2)) {
+        <img class="banner w-100" src="/images/iphone_banner.jpg" alt="no image" />
+        }
+    </div>
+
+    <div class="menu-slider w-100 mt-5" #cardslidermenu>
+        @defer (on viewport(cardslidermenu)) {
+        <section class="mb-3 menu-slider-category d-flex align-items-center justify-content-center">
+            <ul class="d-flex list-unstyled">
+                <li><button class="px-2 py-2 mx-2">Smartphone</button></li>
+                <li><button class="px-2 py-2 mx-2">Smart Watch</button></li>
+                <li><button class="px-2 py-2 mx-2">Pad</button></li>
+            </ul>
+        </section>
+        <section class="menu-slider-products row" lazyLoadObserver [threshold]="0.1">
+            <div class="col-lg-4 col-md-6">
+                <app-card-slider-menu [name]="'Iphone 11'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip11.png'"
+                                      [price]="'$500'"></app-card-slider-menu>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <app-card-slider-menu [name]="'Iphone 11'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip11.png'"
+                                      [price]="'$500'"></app-card-slider-menu>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <app-card-slider-menu [name]="'Iphone 12'"
+                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
+                                      [srcImg]="'/images/ip12.png'"
+                                      [price]="'$500'"></app-card-slider-menu>
+            </div>
+        </section>
+        }
+    </div>
+    <section class="homepage__newsletter d-flex flex-column align-items-center">
+        <h3 class="comment__title d-flex text-center">
+            <p>Please let us know what you think about our services or anything related.</p>
+        </h3>
+        <form class="comment_form mt-5 w-25 d-flex flex-column align-items-center">
+            <div class="d-flex flex-column align-items-center rainbow-border pb-3">
+                <input class="w-100 comment_input px-2" name="email" placeholder="What's your Comment?" value="">
+            </div>
+            <span class="newsletter__error"></span>
+            <button type="submit" class="btn btn-danger tex-black mt-5 px-3 py-3">Send comment</button>
+        </form>
+    </section>
+    <div #blogcard class="menu-blogs w-100 d-flex flex-column align-items-center mt-5 py-5 mb-2" lazyLoadObserver [threshold]="0.1">
+        <h1 class="text-white">
+            Recent from blog
+        </h1>
+        <p class=" w-75 text-center">Fresh, flavorful, and maybe some healthy recipes made for real, actual, everyday life. You don't need to be a pro! Helping you celebrate the joy of food in a non-intimidating way.</p>
+        <section class="menu-slider-blogs row mx-5 my-5">
+            @defer (on viewport(blogcard)) {
+            <div class="col-lg-4 col-md-6">
+                <app-blog-card></app-blog-card>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <app-blog-card></app-blog-card>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <app-blog-card></app-blog-card>
+            </div>
+            }
+        </section>
+        <div class="d-flex justify-content-center mb-5">
+            <button class="btn btn-warning">More posts</button>
+        </div>
+    </div>
+    <div class="contact-map w-100 row" lazyLoadObserver [threshold]="0.1">
+        <section class="col-lg-6 col-md-12 mb-5 mt-5">
+            <app-googlemap></app-googlemap>
+        </section>
+        <div class="col-lg-6 col-md-12 d-flex flex-column align-items-center">
+            <h2 class="text-white">Contact Us</h2>
+            <div class="w-75">
+                <p>Have a question, suggestion, or just want to say hello? We'd love to hear from you!</p>
+
+                <p class="text-white">Customer Support:</p>
+                <p>Our dedicated customer support team is ready to assist you with any inquiries you may have.</p>
+                <p>      - Email: support&#64;pizzatime.com</p>
+                <p> - Phone: 000 (000) 123 4567</p>
+                <p> - Hours: Monday - Friday, 8:00am - 9:00pm (EST)</p>
+                <p class="text-white"> General Inquiries:</p>
+                <p>If you have general questions about our company, partnerships, or anything else, feel free to get in touch.</p>
+
+                <p>- Email: info&#64;pizzatime.com</p>
+                <p class="text-white">Feedback and Suggestions: </p>
+                <p>
+                    We value your feedback and are always striving to improve. If you have any suggestions, comments, or ideas on how we can enhance our offerings, please let us know.
+                </p>
+                <p>- Email: feedback&#64;pizzatime.com</p>
+            </div>
+        </div>
+    </div>
+
+
