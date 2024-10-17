@@ -20,7 +20,7 @@ namespace AngularDotNetEcommercial.Server.Helpers
         {
             if (!string.IsNullOrEmpty(source.ImageUrl))
             {
-                return _configuration["ApiUrl"] + source.ImageUrl;
+                return source.ImageUrl;// _configuration["ApiUrl"] + source.ImageUrl
             }
             return "";
         }

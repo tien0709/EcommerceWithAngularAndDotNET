@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-
-
+import { ApiInterceptor } from './interceptors/api.interceptors';
+import { ApiService } from './services/api.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
-  declarations: [NavBarComponent],
+  declarations: [],
   imports: [
       CommonModule,
-      FontAwesomeModule,
     ],
     exports: [
-        NavBarComponent
     ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ApiInterceptor,
+            multi: true
+        }
+    ]
 })
 export class CoreModule { }

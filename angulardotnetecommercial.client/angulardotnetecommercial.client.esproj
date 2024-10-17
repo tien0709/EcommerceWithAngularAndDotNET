@@ -7,4 +7,38 @@
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\angulardotnetecommercial.client\browser\</BuildOutputFolder>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\app\core\authentication\guards\" />
+    <Folder Include="src\app\core\authentication\models\" />
+    <Folder Include="src\app\core\authentication\services\" />
+    <Folder Include="src\app\core\constant\" />
+    <Folder Include="src\app\core\interceptors\" />
+    <Folder Include="src\app\data\interfaces\" />
+    <Folder Include="src\app\data\enum\" />
+    <Folder Include="src\app\features\admin\about-management\services\" />
+    <Folder Include="src\app\features\admin\blog-management\services\" />
+    <Folder Include="src\app\features\admin\contact-management\services\" />
+    <Folder Include="src\app\features\admin\product-management\services\" />
+    <Folder Include="src\app\features\admin\dashboard\components\" />
+    <Folder Include="src\app\features\admin\dashboard\models\" />
+    <Folder Include="src\app\features\admin\dashboard\stores\actions\" />
+    <Folder Include="src\app\features\admin\dashboard\stores\effects\" />
+    <Folder Include="src\app\features\admin\dashboard\stores\selectors\" />
+    <Folder Include="src\app\features\admin\dashboard\stores\reducers\" />
+    <Folder Include="src\app\features\admin\dashboard\services\" />
+    <Folder Include="src\app\features\auth\components\" />
+    <Folder Include="src\app\features\auth\pages\login\" />
+    <Folder Include="src\app\features\auth\pages\forgot-password\" />
+    <Folder Include="src\app\features\auth\services\" />
+    <Folder Include="src\app\features\auth\pages\reset-password\" />
+    <Folder Include="src\app\features\auth\pages\register\" />
+    <Folder Include="src\app\features\public\stores\" />
+    <Folder Include="src\app\shared\layout\aut-layout\" />
+    <Folder Include="src\app\shared\layout\footer\" />
+    <Folder Include="src\app\shared\layout\dashboard-layout\" />
+    <Folder Include="src\app\shared\directives\" />
+    <Folder Include="src\app\shared\pipes\" />
+    <Folder Include="src\app\shared\validators\" />
+    <Folder Include="src\app\utils\helpers\" />
+  </ItemGroup>
 </Project>
