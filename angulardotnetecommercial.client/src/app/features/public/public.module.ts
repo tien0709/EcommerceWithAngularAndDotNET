@@ -11,11 +11,13 @@ import { CheckoutModule } from './checkout/checkout.module';
 import { AboutModule } from './about/about.module';
 import { Iproduct } from '../../data/models/Iproduct';
 import { SharedModule } from '../../shared/shared.module';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
     imports: [
         CommonModule,
         PublicRoutingModule,
+        ProductModule,
         AboutModule,
         BlogModule,
         CartModule,

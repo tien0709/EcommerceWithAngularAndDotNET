@@ -7,6 +7,7 @@ import { CardRotateComponent } from './card-rotate/card-rotate.component';
 import { CardPricingComponent } from './card-pricing/card-pricing.component';
 import { CardFadeinComponent } from './card-fadein/card-fadein.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ProductCardComponent } from './product-card/product-card.component';
 
 
 
@@ -21,14 +22,17 @@ import { GoogleMapsModule } from '@angular/google-maps';
         CardRotateComponent,
         CardSliderMenuComponent,
         BlogCardComponent,
-        GooglemapComponent],
-  exports: [
+        GooglemapComponent,
+        ProductCardComponent
+    ],
+    exports: [
         CardFadeinComponent,
         CardPricingComponent,
         CardRotateComponent,
         CardSliderMenuComponent,
         BlogCardComponent,
-        GooglemapComponent
+        GooglemapComponent,
+        ProductCardComponent
    ]
 })
 export class ComponentsModule { }
