@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center mx-2 mb-2 mb-lg-0 text-decoration-none" [routerLink]="['/']">
+            <img class="bi" width="200" height="80" src="images/logo.png" aria-label="Bootstrap" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a [routerLink]="['/']" class="nav-link text-white">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/blogs']" class="nav-link text-white">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/products']" class="nav-link text-white">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/contact']" class="nav-link text-white">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/about']" class="nav-link text-white">About</a>
+                </li>
+            </ul>
+            <form class="d-flex col-lg-3 mb-3 mb-lg-0 me-lg-0" role="search">
+                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+            </form>
+            <div class="col-lg-3 mx-5 d-flex text-center">
+                <div *ngIf="isLoggedIn; else login">
+                    <button (click)="logout()" class="btn btn-secondary me-2">Logout</button>
+                </div>
+
+                <ng-template #login>
+                    <span></span>
+                    <a [routerLink]="['/auth']" class="btn btn-outline-light me-2">Login</a>
+                </ng-template>
+                <a [routerLink]="['/cart']" class="btn btn-warning position-relative">
+                    <fa-icon [icon]="faShoppingCart"></fa-icon>
+                    <div class="card-no">5</div>
+                </a>
+                <div *ngIf="isLoggedIn">
+                    <span class="mx-5">Welcome {{userName}}!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

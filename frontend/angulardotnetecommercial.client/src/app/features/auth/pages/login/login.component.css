@@ -1,0 +1,14 @@
+﻿.login {
+    padding-top: 10rem;
+    font-size: 1.25rem;
+}
+
+.rainbow-border {
+    border-bottom: 4px solid; /* Đặt viền xung quanh */
+    border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1; /* Tạo gradient cho viền */
+    padding: 20px; /* Khoảng cách bên trong */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
