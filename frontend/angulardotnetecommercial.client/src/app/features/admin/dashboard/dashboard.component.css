@@ -1,0 +1,16 @@
+﻿.content {
+    padding-top: 10rem;
+    opacity: 0;
+    transition: opacity 2s, transform 1s;
+    transform: translateX(-10rem);
+}
+
+.title {
+    font-weight: bold;
+    font-size: 4rem;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateX(0);
+}

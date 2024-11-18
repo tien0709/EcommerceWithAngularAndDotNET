@@ -1,0 +1,15 @@
+﻿.card-upper {
+    position: absolute;
+    z-index: 2;
+    top: 70%;
+    background-color: #171B1D;
+    padding: 1rem;
+    color: #d7d9d9;
+}
+.bg-color-card {
+    background-color: #212529;
+    z-index: 1;
+}
+.card-img {
+    z-index: 1;
+}

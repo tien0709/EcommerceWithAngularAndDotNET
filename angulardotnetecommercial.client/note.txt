@@ -1,7 +1,0 @@
-﻿PS C:\Users\acer\source\repos\AngularDotNetEcommercial> dotnet ef migrations add Initial -p Infrastructure -s AngularDotNetEcommercial.Server -c StoreContext
-
-dotnet ef database update -p Infrastructure -s AngularDotNetEcommercial.Server -c StoreContext
-
-git ignore một file nhưng nếu trước đõ đã push một file lên thì phải git rm -r --cached <tên_folder> đễ xóa theo dõi trước đó\
-
-phải set Server như start project, đồng thời chỉnh proxy.config.js để k cần sử dụng base url

@@ -1,0 +1,64 @@
+﻿.rainbow-border {
+    border-bottom: 4px solid; /* Đặt viền xung quanh */
+    border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 1; /* Tạo gradient cho viền */
+    padding: 20px; /* Khoảng cách bên trong */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact {
+    padding-top: 10rem;
+    opacity: 0;
+    transition: opacity 2s, transform 1s;
+    transform: translateX(-10rem);
+}
+.content {
+}
+
+.bandroll {
+    background-color: #fac564;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.image-container {
+
+}
+
+.image {
+    width: 100%;
+    height: 10rem;
+    padding: 0;
+}
+
+
+@media (min-width: 992px) {
+    .image-container {
+        position: absolute;
+        top: 50%;
+        right: 10%;
+        margin-bottom: 3rem;
+    }
+    .image {
+        height: 15rem;
+        border: 0.1rem solid #fac564;
+        padding: 0;
+        border-radius: 3%;
+    }
+}
+
+.btn-text {
+    font-size: 1.2rem;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateX(0);
+}

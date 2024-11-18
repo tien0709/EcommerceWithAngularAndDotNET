@@ -1,0 +1,48 @@
+.menu {
+    padding-top: 10rem;
+    opacity: 0;
+    transition: opacity 2s, transform 1s;
+    transform: translateX(-10rem);
+}
+table{
+    border-radius: 5%;
+}
+.text_category {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu_category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.category_item {
+    padding: 0.5rem;
+    margin: 0;
+}
+.category_item:hover {
+    background-color: #ffc107;
+    color: white
+}
+
+.category_header {
+    background-color: #ffc107;
+}
+
+form {
+    width: 80%;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+

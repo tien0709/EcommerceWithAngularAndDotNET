@@ -1,0 +1,16 @@
+<article class="register d-flex flex-column align-items-center">
+    <header class="text-white"><h2>Sign Up</h2></header>
+    <form class="col-lg-4 col-md-8  px-5" (ngSubmit)="onSubmit()" method="post" #registerForm="ngForm">
+        <input type="email" class="rainbow-border mx-auto my-3" [(ngModel)]="email" name="email" placeholder="Email" />
+        <input type="text" class="rainbow-border mx-auto my-3" name="name" [(ngModel)]="name" placeholder="Name" />
+        <input type="password" class="rainbow-border mx-auto my-3" [(ngModel)]="password" name="password" placeholder="Password" />
+        <input type="password" class="rainbow-border mx-auto my-3" [(ngModel)]="repassword" name="repassword" placeholder="Retype Password" />
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-danger mt-5 mx-auto btn-text px-5 py-2">Register</button>
+        </div>
+    </form>
+    <div class="col-lg-8 col-md-8 my-3 alert alert-danger" *ngIf="errorMessage">
+        {{errorMessage}}
+    </div>
+</article>
+

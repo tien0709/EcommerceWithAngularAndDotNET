@@ -1,0 +1,9 @@
+﻿<div *ngFor="let product of products " class="col-lg-4 col-md-6 ml-auto">
+        <div #fadeElement class="d-flex my-3">
+            <img [src]="product.imageUrl" alt="..." style="width: 40%; height: 30%">
+            <div class="card-body px-3 py-1 d-flex flex-column">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text my-3">{{product.description}}</p>
+            </div>
+        </div>
+</div>
