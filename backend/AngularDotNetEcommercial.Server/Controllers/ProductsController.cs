@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AngularDotNetEcommercial.Core.Interfaces;
 using System.Net.WebSockets;
-using AngularDotNetEcommercial.Infrastructure.Data;
+using AngularDotNetEcommercial.Backend.Infrastructure.Data;
 using AutoMapper;
 using AngularDotNetEcommercial.Server.Dtos;
 using AngularDotNetEcommercial.Server.Errors;

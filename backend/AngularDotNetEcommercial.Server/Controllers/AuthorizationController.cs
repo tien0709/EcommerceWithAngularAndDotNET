@@ -1,7 +1,10 @@
-﻿using AngularDotNetEcommercial.Server.Dtos;
-using AngularDotNetEcommercial.Server.Services;
+﻿using AngularDotNetEcommercial.Core.Entities;
+using AngularDotNetEcommercial.Server.Dtos;
+using AngularDotNetEcommercial.Server.Services.Abstraction;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Data;
 
 namespace AngularDotNetEcommercial.Server.Controllers
 {
@@ -10,7 +13,7 @@ namespace AngularDotNetEcommercial.Server.Controllers
     public class AuthorizationController : Controller
     {
         private readonly IUserService _userService;
- 
+
         public AuthorizationController(IUserService userService)
         {
             _userService = userService;
@@ -42,6 +45,15 @@ namespace AngularDotNetEcommercial.Server.Controllers
             {
                 return BadRequest(new { Message = "Registration failed.", Error = ex.Message });
             }
+        }
+
+        [HttpGet("getRole")]
+        public IActionResult getRole()
+        {
+            var role = HttpContext.Items["Role"];
+            var jsonRole = JsonConvert.SerializeObject(role);
+
+            return Ok(new { Role = jsonRole });
         }
 
     }

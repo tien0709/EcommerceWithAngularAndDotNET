@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace AngularDotNetEcommercial.Core.Interfaces
 {
-    public interface IGenericRepository<T> where T : BaseEntity
+    public interface IGenericRepository<T> where T : IBaseEntity
     {
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(string id);
         Task<IReadOnlyList<T>> GetAllAsync();
         Task<T> GetEntityWithSpecAsync(ISpecification<T> spec);
         Task<IReadOnlyList<T>> GetListAsync(ISpecification<T> spec);

@@ -5,6 +5,7 @@ import { ContentLayoutComponent } from './content-layout/content-layout.componen
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterLink } from '@angular/router';
+import { NavBarManagementComponent } from './nav-bar-management/nav-bar-management.component';
 
 
 
@@ -17,12 +18,14 @@ import { RouterLink } from '@angular/router';
     declarations: [
         ContentLayoutComponent,
         NavBarComponent,
-        FooterComponent
+        FooterComponent,
+        NavBarManagementComponent
     ],
     exports: [
         ContentLayoutComponent,
         NavBarComponent,
-        FooterComponent
+        FooterComponent,
+        NavBarManagementComponent
   ]
 })
 export class LayoutModule { }

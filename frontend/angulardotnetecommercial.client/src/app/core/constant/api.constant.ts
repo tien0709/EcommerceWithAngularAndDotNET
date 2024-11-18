@@ -12,3 +12,8 @@ export const API_ENDPOINTS = {
         LOGOUT: '/authorization/logout',
     }
 };
+
+export const ROLES = {
+    ADMIN: "Admin",
+    USER: "User"
+};

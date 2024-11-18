@@ -1,12 +1,12 @@
 ﻿using AngularDotNetEcommercial.Core.BaseEntities;
-using AngularDotNetEcommercial.Infrastructure.Data;
+using AngularDotNetEcommercial.Backend.Infrastructure.Data;
 using AngularDotNetEcommercial.Core.Specification;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using AngularDotNetEcommercial.Core.Interfaces;
-namespace AngularDotNetEcommercial.Infrastructure.Data
+namespace AngularDotNetEcommercial.Backend.Infrastructure.Data
 {
-    public class GenericRepository<T>: IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T>: IGenericRepository<T> where T : class, IBaseEntity// phai la class va ke thua tu IBaseEntity
     {
         private readonly StoreContext _context;
 
@@ -15,7 +15,7 @@ namespace AngularDotNetEcommercial.Infrastructure.Data
             _context = context;
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(string id)
         {
             return await _context.Set<T>().FindAsync(id);
         }

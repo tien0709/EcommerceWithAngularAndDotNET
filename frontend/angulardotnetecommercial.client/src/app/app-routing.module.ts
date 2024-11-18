@@ -9,15 +9,11 @@ import { DashboardComponent } from './features/admin/dashboard/dashboard.compone
 import { CheckoutComponent } from './features/public/checkout/checkout.component';
 import { CartComponent } from './features/public/cart/cart.component';
 import { AuthGuard } from './core/authentication/guards/auth.guard';
+import { AuthorityGuard } from './core/authentication/guards/authority.guard';
 
 const routes: Routes = [
     {
-        path: 'admin', 
-        canActivate: [AuthGuard],
-        data: {
-            role: 'ADMIN'
-        },
-        loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule)
+      path: 'admin', loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule)
     },
 
     { path: 'auth', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule) },

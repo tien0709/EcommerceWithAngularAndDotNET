@@ -1,0 +1,156 @@
+  <!-- Favicons -->
+<link href="/NiceAdmin/assets/img/favicon.png" rel="icon">
+<link href="/NiceAdmin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="/NiceAdmin/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="/NiceAdmin/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+<link href="/NiceAdmin/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+<link href="/NiceAdmin/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="/NiceAdmin/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="/NiceAdmin/assets/css/style.css" rel="stylesheet">
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+        <a asp-controller="DashBoard" class="logo d-flex align-items-center">
+            <img src="/NiceAdmin/assets/img/admin.png" alt="" style="width: 40px;">
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+        <form class="search-form d-flex align-items-center" method="POST" action="#">
+            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+
+            <li class="nav-item d-block d-lg-none">
+                <a class="nav-link nav-icon search-bar-toggle " href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li><!-- End Search Icon-->
+
+            <li>
+                <a class="btn btn-outline-info me-2" [routerLink]="['/']">
+                    <i class="bi bi-house-door"></i>
+                </a><!-- End Home Icon -->
+            </li><!-- End Home Nav -->
+
+            <li>
+                <a class="btn btn-outline-warning me-2" asp-controller="Dashboard" asp-action="Index" asp-area="User">
+                    <i class="ri-user-line"></i>
+                </a><!-- End User Icon -->
+            </li><!-- End User Nav -->
+
+            <li>
+                <a class="btn btn-outline-danger me-2" [routerLink]="['/auth']">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav><!-- End Icons Navigation -->
+
+</header><!-- End Header -->
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+        <li class="nav-item">
+            <a class="nav-link " asp-controller="DashBoard">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="About" asp-action="Index">
+                <i class="bi bi-file-earmark-person"></i>
+                <span>About</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="Homepage" asp-action="Index">
+                <i class="bi bi-house-door"></i>
+                <span>Home Page</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="Service" asp-action="Index">
+                <i class="bi bi-hdd-stack"></i>
+                <span>Services</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="Team" asp-action="Index">
+                <i class="bi bi-people"></i>
+                <span>Team</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="Testimonial" asp-action="Index">
+                <i class="bi bi-chat-left-text"></i>
+                <span>Testimonial</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="Category" asp-action="Index">
+                <i class="bi bi-tags"></i>
+                <span>Categories</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="Portfolio" asp-action="Index">
+                <i class="bi bi-file-earmark-image"></i>
+                <span>Portfolio</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-controller="Contact" asp-action="Index">
+                <i class="bi bi-envelope"></i>
+                <span>Contact Us</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" asp-area="Admin" asp-controller="Admin" asp-action="getUserList">
+                <i class="bi bi-person"></i>
+                <span>List User</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+    </ul>
+
+</aside><!-- End Sidebar-->
+<!-- Vendor JS Files -->
+<script src="/NiceAdmin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="/NiceAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/NiceAdmin/assets/vendor/chart.js/chart.umd.js"></script>
+<script src="/NiceAdmin/assets/vendor/echarts/echarts.min.js"></script>
+<script src="/NiceAdmin/assets/vendor/quill/quill.js"></script>
+<script src="/NiceAdmin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="/NiceAdmin/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="/NiceAdmin/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="~/NiceAdmin/assets/js/main.js"></script>

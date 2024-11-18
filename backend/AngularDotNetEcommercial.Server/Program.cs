@@ -1,4 +1,4 @@
-﻿using AngularDotNetEcommercial.Infrastructure.Data;
+﻿using AngularDotNetEcommercial.Backend.Infrastructure.Data;
 using AngularDotNetEcommercial.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -10,9 +10,10 @@ using AngularDotNetEcommercial.Server.Controllers;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using AngularDotNetEcommercial.Server.Extensions;
 using AngularDotNetEcommercial.Server.Utils;
-using AngularDotNetEcommercial.Server.Services;
 using AngularDotNetEcommercial.Core.Entities;
 using Microsoft.AspNetCore.Identity;
+using AngularDotNetEcommercial.Server.Services.Abstraction;
+using AngularDotNetEcommercial.Server.Services.Concreate;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
@@ -36,10 +37,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddSwaggerDocumentions();
-builder.Services.AddApplicationServices();
 builder.Services.AddDbContext<StoreContext>(option => option
 .UseSqlServer(builder.Configuration.GetConnectionString("Default"),
 x => x.MigrationsAssembly("Infrastructure")));
+
+builder.Services.AddApplicationServices();
 
 builder.Services.AddIdentity<User, Role>(options =>
 {
@@ -52,10 +54,6 @@ builder.Services.AddIdentity<User, Role>(options =>
 })
 .AddEntityFrameworkStores<StoreContext>()  
 .AddDefaultTokenProviders();  
-
-
-builder.Services.AddScoped<IJwtUtils, JwtUtils>();
-builder.Services.AddScoped<IUserService, UserService>();
 
 
 var app = builder.Build();

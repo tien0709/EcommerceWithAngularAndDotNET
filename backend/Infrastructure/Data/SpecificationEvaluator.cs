@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {
-    public class SpecificationEvaluator<T> where T:BaseEntity
+    public class SpecificationEvaluator<T> where T:class, IBaseEntity
     {
         public static IQueryable<T> GetQuery(IQueryable<T> inputQuery, 
             ISpecification<T> specification)

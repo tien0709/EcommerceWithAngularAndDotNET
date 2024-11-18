@@ -11,12 +11,12 @@ import { ResetPasswordComponent } from './pages/reset-password/reset-password.co
 
 const routes: Routes = [
     {
-        path: 'auth',
+        path: '',
         component: AuthComponent,
         children: [
             {
                 path: '',
-                component: LoginComponent
+                component: LoginComponent,
             },
 
             {

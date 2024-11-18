@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AngularDotNetEcommercial.Infrastructure.Data
+namespace AngularDotNetEcommercial.Backend.Infrastructure.Data
 {
     public class ProductSpecification : BaseSpecification<Product>
     {

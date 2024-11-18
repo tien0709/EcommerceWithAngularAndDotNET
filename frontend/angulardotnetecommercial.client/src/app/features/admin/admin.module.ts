@@ -9,13 +9,14 @@ import { ProductManagementModule } from './product-management/product-management
 import { UserManagementModule } from './user-management/user-management.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
 @NgModule({
     imports: [
         // to use router outlet
-      RouterModule,
+        RouterModule,
       AdminRoutingModule,
       CommonModule,
       AboutManagementModule,
@@ -23,11 +24,11 @@ import { RouterModule } from '@angular/router';
       ContactManagementModule,
       DashboardModule,
       ProductManagementModule,
-      UserManagementModule
+      UserManagementModule,
+      SharedModule
     ],
     declarations: [
         AdminComponent// to use imported library/module in components
-    ],
-    bootstrap: [AdminComponent]
+    ]
 })
 export class AdminModule { }

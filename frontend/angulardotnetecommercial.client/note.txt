@@ -1,4 +1,4 @@
-﻿PS C:\Users\acer\source\repos\AngularDotNetEcommercial> dotnet ef migrations add Initial -p Infrastructure -s AngularDotNetEcommercial.Server -c StoreContext
+﻿PS C:\Users\acer\source\repos\AngularDotNetEcommercial\Backend> dotnet ef migrations add Initial -p Infrastructure -s AngularDotNetEcommercial.Server -c StoreContext
 dotnet ef database update -p Infrastructure -s AngularDotNetEcommercial.Server -c StoreContext
 
 

@@ -1,4 +1,5 @@
 ﻿using AngularDotNetEcommercial.Server.Services;
+using AngularDotNetEcommercial.Server.Services.Abstraction;
 using AngularDotNetEcommercial.Server.Utils;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -27,7 +28,8 @@ namespace AngularDotNetEcommercial.Server.MiddleWare
                 {
                     var userIdClaim = jwtToken.Claims.FirstOrDefault(c=>c.Type == ClaimTypes.NameIdentifier);
                     var user = userService.GetById(userIdClaim.Value);
-                    var role = await userService.GetUserRoleAsync(userIdClaim.Value);
+                    var userRoleClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                    var role = await userService.GetUserRoleAsync(userRoleClaim.Value);
                     context.Items["User"] = user;
                     context.Items["Role"] = role;
                 }

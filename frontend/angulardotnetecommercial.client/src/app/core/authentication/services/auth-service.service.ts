@@ -15,7 +15,7 @@ export class AuthServiceService {
             map(response => {
                 if (response && response.token) {
                     localStorage.setItem('token', response.token);
-                    localStorage.setItem('username', response.username);
+                    localStorage.setItem('username', response.userName);
                 }
                 return response;
             })
@@ -36,5 +36,13 @@ export class AuthServiceService {
     getUserName() {
         const userName = localStorage.getItem('username');
         return userName;
+    }
+
+    getRole() {
+        return this.http.get<any>(environment.apiUrl + '/authorization/getRole').pipe(
+            map(response => {
+                return response;
+            })
+        );
     }
 }

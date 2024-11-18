@@ -5,6 +5,7 @@ import { ApiService } from './services/api.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './authentication/guards/auth.guard';
 import { AuthServiceService } from './authentication/services/auth-service.service';
+import { AuthorityGuard } from './authentication/guards/authority.guard';
 @NgModule({
     declarations: [],
   imports: [
@@ -19,6 +20,7 @@ import { AuthServiceService } from './authentication/services/auth-service.servi
             multi: true
         },
         AuthGuard,
+        AuthorityGuard,
         AuthServiceService
     ]
 })

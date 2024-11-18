@@ -2,54 +2,52 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BlogManagementComponent } from './blog-management/blog-management.component';
+import { AboutManagementComponent } from './about-management/about-management.component';
+import { UserManagementComponent } from './user-management/user-management.component';
+import { ProductManagementComponent } from './product-management/product-management.component';
+import { ContactManagementComponent } from './contact-management/contact-management.component';
 
 // admin-routing.module.ts
 const routes: Routes = [
     {
-        path: 'admin',
+        path: '',
         component: AdminComponent,
         children: [
             {
-                path: 'about',
-                loadChildren: () => import('./about-management/about-management.module')
-                    .then(m => m.AboutManagementModule)
-            },
-            {
-                path: 'blog',
-                loadChildren: () => import('./blog-management/blog-management.module')
-                    .then(m => m.BlogManagementModule)
-            },
-            {
-                path: 'contact',
-                loadChildren: () => import('./contact-management/contact-management.module')
-                    .then(m => m.ContactManagementModule)
-            },
-            {
                 path: '',
-                loadChildren: () => import('./dashboard/dashboard.module')
-                    .then(m => m.DashboardModule)
+                component: DashboardComponent,
+            },
+
+            {
+                path: 'blogs', component: BlogManagementComponent,
+            },
+
+            {
+                path: 'about', component: AboutManagementComponent,
+            },
+
+            {
+                path: 'contact', component: ContactManagementComponent,
+            },
+
+            {
+                path: 'products', component: ProductManagementComponent,
             },
             {
-                path: 'products',
-                loadChildren: () => import('./product-management/product-management.module')
-                    .then(m => m.ProductManagementModule)
+                path: 'user', component: UserManagementComponent,
             },
-            {
-                path: 'users',
-                loadChildren: () => import('./user-management/user-management.module')
-                    .then(m => m.UserManagementModule)
-            }
         ]
     }
 ];
 
 @NgModule({
-  imports: [
-      CommonModule,
+    declarations: [],
+    imports: [
+        CommonModule,
         RouterModule.forChild(routes)
     ],
-  exports: [
-      RouterModule
-  ]
+    exports: [RouterModule]
 })
 export class AdminRoutingModule { }

@@ -27,7 +27,7 @@ export class RegisterComponent {
             this.router.navigate(['/auth']); // Navigate to home page upon successful login
         }, error => {
 
-            this.errorMessage = 'register unsuccessful';
+            this.errorMessage = error.error.message + error.error.error;
         })
     }
 }

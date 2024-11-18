@@ -8,7 +8,7 @@ namespace AngularDotNetEcommercial.Server.Utils
 {
     public interface IJwtUtils
     {
-        public string GenerateToken(User user);
+        public string GenerateToken(User user, string role);
         public TokenValidationResult ValidateToken(string token);
     }
 
@@ -20,11 +20,13 @@ namespace AngularDotNetEcommercial.Server.Utils
             _configuration = configuration;
         }
 
-        public string GenerateToken(User user)
+        public string GenerateToken(User user, string role)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),  // Claim cho user.Id
+                    new Claim(ClaimTypes.Name, user.UserName),      // Claim cho username (nếu cần thiết)
+                    new Claim(ClaimTypes.Role, role)                // Claim cho role
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -86,9 +88,18 @@ namespace AngularDotNetEcommercial.Server.Utils
                 //  check claim
                 var userIdClaim = principal.FindFirst(ClaimTypes.NameIdentifier);
 
+                if (userIdClaim == null)
+                {
+                    // Nếu không tìm thấy claim, token không hợp lệ
+                    return new TokenValidationResult
+                    {
+                        IsValid = false
+                    };
+                }
+
                 return new TokenValidationResult
                 {
-                    IsValid = false,
+                    IsValid = true,
                     SecurityToken = jwtToken,
                 };
 

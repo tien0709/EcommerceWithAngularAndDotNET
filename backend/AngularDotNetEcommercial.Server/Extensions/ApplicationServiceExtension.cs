@@ -1,12 +1,15 @@
 ﻿
 
 using AngularDotNetEcommercial.Core.Interfaces;
-using AngularDotNetEcommercial.Infrastructure.Data;
+using AngularDotNetEcommercial.Backend.Infrastructure.Data;
 using AngularDotNetEcommercial.Server.Errors;
 using AngularDotNetEcommercial.Server.Filters;
 using AngularDotNetEcommercial.Server.Helpers;
+using AngularDotNetEcommercial.Server.Services.Abstraction;
+using AngularDotNetEcommercial.Server.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using AngularDotNetEcommercial.Server.Services.Concreate;
 
 namespace AngularDotNetEcommercial.Server.Extensions
 {
@@ -15,6 +18,8 @@ namespace AngularDotNetEcommercial.Server.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IJwtUtils, JwtUtils>();
+            services.AddScoped<IUserService, UserService>();
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.InvalidModelStateResponseFactory = actionContext =>

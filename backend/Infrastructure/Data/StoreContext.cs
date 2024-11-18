@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace AngularDotNetEcommercial.Infrastructure.Data
+namespace AngularDotNetEcommercial.Backend.Infrastructure.Data
 {
     public class StoreContext : IdentityDbContext<User, Role, string>
     {
