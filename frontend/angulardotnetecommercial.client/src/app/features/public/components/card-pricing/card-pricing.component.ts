@@ -7,7 +7,7 @@
 })
 export class CardPricingComponent implements OnInit {
     @Input() name: string = "";
-    @Input() price: string = "";
+    @Input() price: number = 0;
     @Input() srcImg: string = "";
     @Input() description: string = "";
     @ViewChild('priceElement') card: ElementRef | null = null;

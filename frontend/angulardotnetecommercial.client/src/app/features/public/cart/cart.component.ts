@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+﻿import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { IcartItem } from '../../../data/models/ICartItem';
+import { PublicService } from '../services/public.service';
+import { Icart } from '../../../data/models/ICart';
 
 @Component({
   selector: 'app-cart',
@@ -8,25 +10,22 @@ import { IcartItem } from '../../../data/models/ICartItem';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-    carts: IcartItem[] = []
+    cartItems: IcartItem[] = []
+    quantity: number = 0;
+    total: GLfloat = 0;
+    cartItemsString: string =""
 
-    constructor(private http: HttpClient) { }
+    constructor(private publicService: PublicService) { }
 
     ngOnInit() {
-        this.getCartItems();
-    }
+        this.publicService.getCart().subscribe((response: any) => {
+            this.cartItems = response.items
 
-    getCartItems() {
-        this.http.get<IcartItem[]>('/api/carts').subscribe({
-            next: (response: IcartItem[]) => {
-                this.carts = response;
-            },
-            error: (error) => {
-                console.log(error);
-            },
-            complete: () => {
-                //console.log('Request completed');
-            }
+            for (let item of this.cartItems) {
+                this.quantity += item.quantity;
+                this.total += item.quantity * item.product.price;
+            }// bỏ for ngoài là chạy song song đó
+            this.cartItemsString = JSON.stringify(this.cartItems);
         });
     }
 }

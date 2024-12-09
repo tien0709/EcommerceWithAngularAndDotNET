@@ -14,10 +14,14 @@ using AngularDotNetEcommercial.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 using AngularDotNetEcommercial.Server.Services.Abstraction;
 using AngularDotNetEcommercial.Server.Services.Concreate;
+using AngularDotNetEcommercial.Server.Models;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
+//Momo Api, have to be in top
+builder.Services.Configure<MomoOptionModel>(builder.Configuration.GetSection("MomoAPI"));
+builder.Services.AddScoped<IMomoService, MomoService>();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -27,21 +31,35 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("https://localhost:4200")
+                          policy.WithOrigins("https://localhost:4200", "https://test-payment.momo.vn")
                                 .AllowAnyHeader()
                                 .AllowAnyMethod(); ;
                       });
 });
+/*
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});*/
 // truongwf hopwj category vaf product taoj mootj cycle
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddHttpClient();
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddSwaggerDocumentions();
 builder.Services.AddDbContext<StoreContext>(option => option
 .UseSqlServer(builder.Configuration.GetConnectionString("Default"),
-x => x.MigrationsAssembly("Infrastructure")));
+x => x.MigrationsAssembly("Infrastructure")), ServiceLifetime.Scoped);
 
 builder.Services.AddApplicationServices();
+
 
 builder.Services.AddIdentity<User, Role>(options =>
 {
@@ -66,8 +84,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwaggerDocumention();
 }
-app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 app.UseCors(MyAllowSpecificOrigins);
+app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 

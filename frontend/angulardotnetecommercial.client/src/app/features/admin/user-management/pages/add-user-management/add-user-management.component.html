@@ -1,1 +1,67 @@
-<p>add-user-management works!</p>
+<h2>User List</h2>
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item" active>User List</li>
+        <li class="breadcrumb-item" active>Add</li>
+    </ol>
+</nav>
+
+<div class="card">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            <!-- phai dat label sau input-->
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="RowVersion" />
+            <input type="hidden" asp-for="CreateDate" />
+
+            <!-- AboutUs field Field -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input asp-for="Name" type="text" class="form-control" id="Name" />
+                        <label for="Name" class="col-sm-2 col-form-label">Name</label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input asp-for="Name" type="text" class="form-control" id="Name" />
+                        <label for="Name" class="col-sm-2 col-form-label">Email</label>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slogan Field -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input type="text" asp-for="Description" class="form-control" id="Description" />
+                        <label for="Description" class="col-sm-2 col-form-label">Phone Number</label>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Icon Field 1 -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input asp-for="Icon" type="text" class="form-control" id="Icon" />
+                        <label for="Icon" class="col-sm-2 col-form-label">Address</label>
+                        <span asp-validation-for="Icon" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary me-3">Add</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>

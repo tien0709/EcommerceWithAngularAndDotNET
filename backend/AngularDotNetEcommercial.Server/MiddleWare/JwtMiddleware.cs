@@ -20,20 +20,37 @@ namespace AngularDotNetEcommercial.Server.MiddleWare
         public async Task Invoke(HttpContext context, IUserService userService, IJwtUtils jwtUtils)
         {
             var token = context.Request.Headers["authorization"].FirstOrDefault()?.Split(" ").Last();
-            var validationResult = jwtUtils.ValidateToken(token);
-            if (validationResult.IsValid)
+            if (string.IsNullOrEmpty(token))
             {
-                var jwtToken = validationResult.SecurityToken as JwtSecurityToken;
-                if (jwtToken != null)
+                // have some page dont need to login so dont need token
+                //await context.Response.WriteAsync("Token is missing.");
+            }
+            else
+            {
+                var validationResult = jwtUtils.ValidateToken(token);
+                if (validationResult.IsValid)
                 {
-                    var userIdClaim = jwtToken.Claims.FirstOrDefault(c=>c.Type == ClaimTypes.NameIdentifier);
-                    var user = userService.GetById(userIdClaim.Value);
-                    var userRoleClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
-                    var role = await userService.GetUserRoleAsync(userRoleClaim.Value);
-                    context.Items["User"] = user;
-                    context.Items["Role"] = role;
+                    var jwtToken = validationResult.SecurityToken as JwtSecurityToken;
+                    if (jwtToken != null)
+                    {
+                        var userIdClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                        var user = await userService.GetByIdAsync(userIdClaim.Value);
+                        var userRoleClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                        var role =  userRoleClaim?.Value;
+                        context.Items["User"] = user;
+                        context.Items["Role"] = role;
+                        context.Items["Id"] = userIdClaim.Value;
+                    }
+                }
+                else
+                {
+                    // Nếu token không hợp lệ hoặc đã hết hạn, trả về 401 Unauthorized
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    await context.Response.WriteAsync("Token is expired or invalid.");
+                    return;
                 }
             }
+           
 
             await _next(context);
         }

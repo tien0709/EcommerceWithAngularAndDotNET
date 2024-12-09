@@ -8,8 +8,10 @@ import { AboutManagementComponent } from './about-management/about-management.co
 import { UserManagementComponent } from './user-management/user-management.component';
 import { ProductManagementComponent } from './product-management/product-management.component';
 import { ContactManagementComponent } from './contact-management/contact-management.component';
+import { EditAboutManagementComponent } from './about-management/pages/edit-about-management/edit-about-management.component';
 
 // admin-routing.module.ts
+
 const routes: Routes = [
     {
         path: '',
@@ -21,23 +23,33 @@ const routes: Routes = [
             },
 
             {
-                path: 'blogs', component: BlogManagementComponent,
+                path: 'blogs',
+                loadChildren: () => import('./blog-management/blog-management.module').then(m => m.BlogManagementModule)
             },
 
             {
-                path: 'about', component: AboutManagementComponent,
+                path: 'about',
+                loadChildren: () => import('./about-management/about-management.module').then(m => m.AboutManagementModule)
             },
 
             {
-                path: 'contact', component: ContactManagementComponent,
+                path: 'contact',
+                loadChildren: () => import('./contact-management/contact-management.module').then(m => m.ContactManagementModule)
             },
 
             {
-                path: 'products', component: ProductManagementComponent,
+                path: 'users',
+                loadChildren: () => import('./user-management/user-management.module').then(m => m.UserManagementModule)
             },
             {
-                path: 'user', component: UserManagementComponent,
+                  path: 'products', 
+                 loadChildren: () => import('./product-management/product-management.module').then(m => m.ProductManagementModule)
             },
+            {
+                path: 'checkouts',
+                loadChildren: () => import('./checkout-management/checkout-management.module').then(m => m.CheckoutManagementModule)
+            },
+
         ]
     }
 ];

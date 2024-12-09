@@ -13,8 +13,5 @@ namespace AngularDotNetEcommercial.Core.Entities
 
         public string EmailCustomerSupport { get; set; } = null!;
 
-        public string EmailGeneralInquire { get; set; } = null!;
-
-        public string EmailFeedback { get; set; } = null!;
     }
 }

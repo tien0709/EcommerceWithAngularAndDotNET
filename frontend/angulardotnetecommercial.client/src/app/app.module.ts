@@ -12,8 +12,10 @@ import { AuthModule } from './features/auth/auth.module';
 import { AdminModule } from './features/admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
     imports: [
+        ToastrModule.forRoot(),
         // for using router outlet
         RouterModule,
         // angular

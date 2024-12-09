@@ -1,0 +1,41 @@
+﻿<h2>Liên hệ</h2>
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+        <li class="breadcrumb-item" active>Liên hệ</li>
+    </ol>
+</nav>
+<!--List-->
+<div class="card-body">
+    <div *ngIf="message$ | async as message" class="alert alert-success">
+        {{ message }}
+    </div>
+    <!-- Table with stripped rows -->
+    <table class="table table-striped-columns">
+        <tbody>
+            <tr>
+                <th scope="row">Số điện thoại</th>
+                <td>{{contact[0].phoneNumber}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Địa chỉ </th>
+                <td>{{contact[0].address}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Thời gian làm việc</th>
+                <td>{{contact[0].timeline}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Email Hỗ trợ khách hàng</th>
+                <td>{{contact[0].emailCustomerSupport}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <!-- End Table with stripped rows -->
+    <div class="row mb-3">
+        <div class="col-sm-12">
+            <a class="btn btn-primary" [routerLink]="['/admin/contact/update']">Cập nhật</a>
+        </div>
+    </div>
+</div>

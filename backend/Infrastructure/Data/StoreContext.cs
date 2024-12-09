@@ -34,7 +34,7 @@ namespace AngularDotNetEcommercial.Backend.Infrastructure.Data
         public DbSet<Discount> Discount { get; set; }
         public DbSet<ProductDiscount> ProductDiscounts { get; set; }
 
-        public DbSet<ShoppingSession> ShoppingSession { get; set; }
+        public DbSet<Cart> Cart { get; set; }
         public DbSet<OrderItems> OrderItems{ get; set; }
 
 

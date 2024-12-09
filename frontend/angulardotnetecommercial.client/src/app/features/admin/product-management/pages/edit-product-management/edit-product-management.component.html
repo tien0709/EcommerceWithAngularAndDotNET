@@ -1,1 +1,95 @@
-<p>edit-product-management works!</p>
+﻿
+<h2>Products</h2>
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item" active>Products</li>
+        <li class="breadcrumb-item" active>Update</li>
+    </ol>
+</nav>
+
+<div class="card">
+    <div class="card-body">
+        <form #uploadForm="ngForm" (ngSubmit)="onSubmit(uploadForm)" enctype="multipart/form-data">
+            <!-- Name field -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input [(ngModel)]="name" name="name" type="text" class="form-control" id="name" required>
+                        <label for="name" class="col-sm-2 col-form-label">Tên</label>
+                        <span *ngIf="uploadForm.controls['name']?.invalid && uploadForm.controls['name']?.touched" class="text-danger">Tên là bắt buộc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- category -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <label for="dropdown" class="me-3">Category</label>
+                    <select id="dropdown" [(ngModel)]="categoryId" name="category">
+                        <option *ngFor="let category of categories" [value]="category.id" [selected]="category.id === categoryId">
+                            {{ category.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- description-->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <textarea [(ngModel)]="description" name="description" class="form-control" id="description" required></textarea>
+                        <label for="description" class="col-sm-2 col-form-label">Mô tả</label>
+                        <span *ngIf="uploadForm.controls['description']?.invalid && uploadForm.controls['description']?.touched" class="text-danger">Mô tả là bắt buộc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input [(ngModel)]="imageUrl" name="imageUrl" type="text" class="form-control" id="imageUrl" required>
+                        <label for="imageUrl" class="col-sm-2 col-form-label">Hình ảnh</label>
+                        <span *ngIf="uploadForm.controls['imageUrl']?.invalid && uploadForm.controls['imageUrl']?.touched" class="text-danger">Hình ảnh là bắt buộc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- price -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input [(ngModel)]="price" name="price" type="number" class="form-control" id="price" required>
+                        <label for="price" class="col-sm-2 col-form-label">Giá</label>
+                        <span *ngIf="uploadForm.controls['price']?.invalid && uploadForm.controls['price']?.touched" class="text-danger">Giá là bắt buộc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- quantity -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input [(ngModel)]="quantity" name="quantity" type="number" class="form-control" id="quantity" required>
+                        <label for="quantity" class="col-sm-2 col-form-label">Số lượng</label>
+                        <span *ngIf="uploadForm.controls['quantity']?.invalid && uploadForm.controls['quantity']?.touched" class="text-danger">Số lượng là bắt buộc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit and Reset Buttons -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary me-3" [disabled]="uploadForm.invalid">Cập nhật</button>
+                <button type="reset" class="btn btn-primary">Hoàn tác</button>
+            </div>
+
+            <!-- Error Message -->
+            <div class="col-md-12 my-3 alert alert-danger" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+        </form>
+    </div>
+</div>
+
+

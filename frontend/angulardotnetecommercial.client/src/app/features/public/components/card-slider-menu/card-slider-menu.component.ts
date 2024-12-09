@@ -8,7 +8,7 @@ import { Component, ElementRef, Input, QueryList, ViewChildren } from '@angular/
 export class CardSliderMenuComponent {
     @Input() name: string = ""
     @Input() description: string = ""
-    @Input() price: string = ""
+    @Input() price: number = 0
     @Input() srcImg: string = ""
     @ViewChildren('sliderElement') cards: QueryList<ElementRef> | null = null;
     //products: Iproduct[] = [];

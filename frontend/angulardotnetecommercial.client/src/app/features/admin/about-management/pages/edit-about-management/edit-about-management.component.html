@@ -1,1 +1,71 @@
-<p>edit-about-management works!</p>
+﻿
+    <h2>Giới thiệu</h2>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+            <li class="breadcrumb-item" active>Giới thiệu</li>
+            <li class="breadcrumb-item" active>Cập nhật</li>
+        </ol>
+    </nav>
+
+    <div class="card">
+        <div class="card-body">
+            <form #uploadForm="ngForm" (ngSubmit)="onSubmit(uploadForm)" enctype="multipart/form-data">
+                <!-- AboutUs field -->
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-floating">
+                            <input [(ngModel)]="aboutUs" name="aboutUs" type="text" class="form-control" id="aboutUs" placeholder="about[0].aboutUs" required>
+                            <label for="aboutUs" class="col-sm-2 col-form-label">Giới thiệu</label>
+                            <span *ngIf="uploadForm.controls['aboutUs']?.invalid && uploadForm.controls['aboutUs']?.touched" class="text-danger">Giới thiệu là bắt buộc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slogan field -->
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-floating">
+                            <textarea [(ngModel)]="feedback" name="feedback" class="form-control" id="feedback" placeholder="about[0].feedback" required></textarea>
+                            <label for="feedback" class="col-sm-2 col-form-label">Slogan</label>
+                            <span *ngIf="uploadForm.controls['feedback']?.invalid && uploadForm.controls['feedback']?.touched" class="text-danger">Slogan là bắt buộc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career -->
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-floating">
+                            <input [(ngModel)]="career" name="career" type="text" class="form-control" id="career" placeholder="about[0].career" required>
+                            <label for="career" class="col-sm-2 col-form-label">Sự nghiệp</label>
+                            <span *ngIf="uploadForm.controls['career']?.invalid && uploadForm.controls['career']?.touched" class="text-danger">Mục Sự nghiệp là bắt buộc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collaboration -->
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-floating">
+                            <input [(ngModel)]="colaboration" name="colaboration" type="text" class="form-control" id="Icon2" placeholder="about[0].colaboration" required>
+                            <label for="colaboration" class="col-sm-2 col-form-label">Cộng tác</label>
+                            <span *ngIf="uploadForm.controls['colaboration']?.invalid && uploadForm.controls['colaboration']?.touched" class="text-danger">Mục Cộng tác là bắt buộc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit and Reset Buttons -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary me-3" [disabled]="uploadForm.invalid">Cập nhật</button>
+                    <button type="reset" class="btn btn-primary">Hoàn tác</button>
+                </div>
+
+                <!-- Error Message -->
+                <div class="col-md-12 my-3 alert alert-danger" *ngIf="errorMessage">
+                    {{errorMessage}}
+                </div>
+            </form>
+
+        </div>
+    </div>

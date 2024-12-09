@@ -5,10 +5,10 @@ namespace AngularDotNetEcommercial.Server.Services.Abstraction
 {
     public interface IGenericService<T>
     {
-        Task<IEnumerable<T>> GetAll();
-        Task<T> GetById(string id);
+        //Task<IEnumerable<T>> GetAllAsync();
+        //Task<T> GetByIdAsync(string id);
 
-        void Update(int id, T model);
-        void Delete(int id);
+        //Task UpdateAsync(string id, T model);
+        //Task DeleteAsync(string id);
     }
 }

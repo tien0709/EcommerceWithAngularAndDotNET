@@ -8,7 +8,7 @@ import { CardPricingComponent } from './card-pricing/card-pricing.component';
 import { CardFadeinComponent } from './card-fadein/card-fadein.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ProductCardComponent } from './product-card/product-card.component';
-
+//import { ToastAlertComponent } from './toast-alert/toast-alert.component';
 
 
 @NgModule({
@@ -23,7 +23,8 @@ import { ProductCardComponent } from './product-card/product-card.component';
         CardSliderMenuComponent,
         BlogCardComponent,
         GooglemapComponent,
-        ProductCardComponent
+        ProductCardComponent,
+        //ToastAlertComponent
     ],
     exports: [
         CardFadeinComponent,
@@ -31,7 +32,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
         CardRotateComponent,
         CardSliderMenuComponent,
         BlogCardComponent,
-        GooglemapComponent,
+        //GooglemapComponent,
         ProductCardComponent
    ]
 })

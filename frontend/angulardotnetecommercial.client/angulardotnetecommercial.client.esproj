@@ -11,9 +11,9 @@
     <Folder Include="src\app\core\authentication\guards\" />
     <Folder Include="src\app\core\authentication\models\" />
     <Folder Include="src\app\core\constant\" />
-    <Folder Include="src\app\core\interceptors\" />
     <Folder Include="src\app\data\interfaces\" />
     <Folder Include="src\app\data\enum\" />
+    <Folder Include="src\app\error\page\" />
     <Folder Include="src\app\features\admin\about-management\services\" />
     <Folder Include="src\app\features\admin\blog-management\services\" />
     <Folder Include="src\app\features\admin\contact-management\services\" />
@@ -39,5 +39,6 @@
     <Folder Include="src\app\shared\pipes\" />
     <Folder Include="src\app\shared\validators\" />
     <Folder Include="src\app\utils\helpers\" />
+    <Folder Include="src\assets\NiceAdmin\assets\" />
   </ItemGroup>
 </Project>

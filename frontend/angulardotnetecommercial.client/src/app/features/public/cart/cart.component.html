@@ -1,52 +1,55 @@
 ﻿<main class="cart d-flex flex-column align-items-center"  lazyLoadObserver>
     <h1 class="text-white title text-center mx-auto">Shopping Cart</h1>
     <article class="cart_items d-flex flex-column align-items-center mt-5">
-        <div *ngFor="let cart of carts ">
-            <section class="cart_item row w-100">
-                <div class="col-md-4 d-flex justify-content-center">
-                    <img [src]="cart.Product.imageUrl" class="img_cart mx-auto" alt="no image" />
-                </div>
-                <div class="col-md-6 d-flex flex-column product_des justify-content-center">
-                    <h2 class="text-white">Iphone 10</h2>
-                    <div class="h4 text-white mb-5">{{cart.Product.description}}</div>
-                    <div class="d-flex justify-content-between amount">
-                        <div>
-                            <p class="text-white mt-3">{{cart.Product.price}}</p>
-                            <p class="text-white mt-3">{{cart.Quantity}}</p>
-                        </div>
-                        <div class="adjust_amount d-flex">
-                            <button class="btn btn-outline-dark btn-lg btn-custom">+</button>
-                            <p class="mx-2 mb-0 mt-3">1</p>
-                            <button class="btn btn-outline-dark btn-lg btn-custom">-</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <div *ngFor="let item of cartItems ">
+    <section class="cart_item row w-100">
+        <div class="col-md-4 d-flex justify-content-center">
+            <img [src]="item.product.imageUrl" class="img_cart mx-auto" alt="no image" style="width: 100%"/>
         </div>
-
+        <div class="col-md-6 d-flex flex-column product_des justify-content-center">
+            <h5 class="text-white">{{item.product.name}}</h5>
+            <div class="h6 text-white mb-5">{{item.product.description}}</div>
+            <div class="d-flex justify-content-between amount align-items-center">
+                <div>
+                    <p class="text-white mt-3 h5">Giá: {{item.product.price}} vnđ</p>
+                    <p class="text-white mt-3 h5">Số lượng trong kho: {{item.product.quantity}}</p>
+                </div>
+                <div class="adjust_amount d-flex h-50">
+                    <button class="btn btn-outline-dark btn-lg btn-custom d-flex justify-content-center align-items-center">+</button>
+                    <p class="mx-2 mb-0 mt-3">{{item.quantity}}</p>
+                    <button class="btn btn-outline-dark btn-lg btn-custom d-flex justify-content-center align-items-center">-</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
         <section class="cart_remove_all mt-5">
-            <button class="rm_btn">remove all items from the cart</button>
+            <button class="rm_btn">Xóa tát cả sản phẩm</button>
         </section>
         <section class="cart_total d-flex flex-column">
             <div class="cart_total_content d-flex justify-content-between">
                 <div class="cart_total_field text-center">
-                    <h5>Tax 10%</h5>
-                    <p class="text-number">$ 0.80</p>
+                    <h5>Thuế: 10%</h5>
+                    <p class="text-number">{{total*0.1}}</p>
                 </div>
                 <div class="cart_total_field text-center">
-                    <h5>Quantity:</h5>
-                    <p class="text-number ">1</p>
+                    <h5>Số lượng:</h5>
+                    <p class="text-number ">{{quantity}}</p>
                 </div>
                 <div class="cart_total_field text-center">
-                    <h5>Total:</h5>
-                    <p class="text-number">$ 8.00</p>
+                    <h5>Tổng:</h5>
+                    <p class="text-number">{{total*1.1 }}</p>
                 </div>
             </div>
         </section>
     </article>
     <article class="cart_total Button">
         <section class="cart_remove_all mt-5">
-            <a class="btn btn-success p-3" href="/checkout">Checkout</a>
+            <a class="btn btn-success p-3"
+               [routerLink]="['/checkout']"
+               [queryParams]="{ items: cartItemsString }">
+                Mua Hàng
+            </a>
         </section>
     </article>
 </main>

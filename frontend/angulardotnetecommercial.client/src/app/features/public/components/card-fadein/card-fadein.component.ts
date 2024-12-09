@@ -1,7 +1,7 @@
 ﻿import { Component, QueryList, ViewChildren, AfterViewInit, HostListener } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { Iproduct } from '../../../../data/models/Iproduct';
-import { CardFadeInService } from '../../services/card-fadein.service';
+import { PublicService } from '../../services/public.service';
 
 @Component({
     selector: 'app-card-fadein',
@@ -11,7 +11,7 @@ import { CardFadeInService } from '../../services/card-fadein.service';
 export class CardFadeinComponent {
     products: Iproduct[] = [];
 
-    constructor(private cardfadeinService: CardFadeInService) { }
+    constructor(private cardfadeinService: PublicService) { }
 
     ngOnInit(): void {
         this.cardfadeinService.getProducts().subscribe((response: Iproduct[]) => {

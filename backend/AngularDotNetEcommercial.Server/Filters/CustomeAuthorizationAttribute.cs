@@ -17,8 +17,8 @@ namespace AngularDotNetEcommercial.Server.Filters
 
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            var user = (User)context.HttpContext.Items["User"];
-            var role = (Role)context.HttpContext.Items["Role"];
+            var user = context.HttpContext.Items["User"];
+            var role = context.HttpContext.Items["Role"];
             // not Authenticated
             if (user == null)
             {
@@ -29,7 +29,7 @@ namespace AngularDotNetEcommercial.Server.Filters
                 return;
             }
             // Role not authorized
-            if (_roles != null && _roles.Any() && !_roles.Contains(role?.Name))
+            if (_roles != null && _roles.Any() && !_roles.Contains(role))
             {
                 
                 context.Result = new JsonResult(new { message = "Forbidden" })

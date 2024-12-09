@@ -4,11 +4,15 @@ import { ProductComponent } from './product.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { ComponentsModule } from '../components/components.module';
 import { SharedModule } from '../../../shared/shared.module';
+import { Iproduct } from '../../../data/models/Iproduct';
+import { PublicService } from '../services/public.service';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
     imports: [
+        RouterModule,
         CommonModule,
         SharedModule,
         ComponentsModule
@@ -21,4 +25,5 @@ import { SharedModule } from '../../../shared/shared.module';
         ProductComponent
     ]
 })
-export class ProductModule { }
+export class ProductModule {
+}

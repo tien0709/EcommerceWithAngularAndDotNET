@@ -13,12 +13,14 @@ import { AuthorityGuard } from './core/authentication/guards/authority.guard';
 
 const routes: Routes = [
     {
-      path: 'admin', loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule)
+        path: 'admin', loadChildren: () => import('./features/admin/admin.module').then(m => m.AdminModule), canActivate: [AuthorityGuard]
     },
 
     { path: 'auth', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule) },
 
-    { path: '', loadChildren: () => import('./features/public/public.module').then(m => m.PublicModule) }
+    { path: '', loadChildren: () => import('./features/public/public.module').then(m => m.PublicModule) },
+
+    { path: 'error', loadChildren: () => import('./error/error.module').then(m => m.ErrorModule) }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

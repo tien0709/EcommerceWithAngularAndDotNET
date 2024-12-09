@@ -4,15 +4,11 @@ namespace AngularDotNetEcommercial.Core.Entities
 {
     public class CartItem: BaseEntity
     {
-        public int ShoppingSessionId { get; set; }
-
-        public ShoppingSession ShoppingSession { get; set; } = null!;
-
-        public int ProductId { get; set; }
-
-        public Product Product { get; set; } = null!;
-
+        public string ProductId { get; set; } =null!;
+        public string CartId { get; set; } = null!;
         public int Quantity { get; set; }
+        public float Price { get; set; }
 
+        public Product Product { get; set; } 
     }
 }

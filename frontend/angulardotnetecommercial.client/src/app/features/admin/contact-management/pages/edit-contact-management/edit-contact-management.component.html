@@ -1,1 +1,71 @@
-<p>edit-contact-management works!</p>
+﻿
+    <h2>Liên hệ</h2>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+            <li class="breadcrumb-item" active>Liên hệ</li>
+            <li class="breadcrumb-item" active>Cập nhật</li>
+        </ol>
+    </nav>
+
+    <div class="card">
+        <div class="card-body">
+            <form #uploadForm="ngForm" (ngSubmit)="onSubmit(uploadForm)" enctype="multipart/form-data">
+                <!-- Addresss field -->
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-floating">
+                            <input [(ngModel)]="address" name="address" type="text" class="form-control" id="address" placeholder="contact[0].address" required>
+                            <label for="address" class="col-sm-2 col-form-label">Địa chỉ</label>
+                            <span *ngIf="uploadForm.controls['address']?.invalid && uploadForm.controls['address']?.touched" class="text-danger">Địa chỉ là bắt buộc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- phoneNumber field -->
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-floating">
+                            <textarea [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="contact[0].phoneNumber" required></textarea>
+                            <label for="phoneNumber" class="col-sm-2 col-form-label">Slogan</label>
+                            <span *ngIf="uploadForm.controls['phoneNumber']?.invalid && uploadForm.controls['phoneNumber']?.touched" class="text-danger">số điện thoại là bắt buộc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Support -->
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-floating">
+                            <input [(ngModel)]="emailCustomerSupport" name="emailCustomerSupport" type="text" class="form-control" id="emailCustomerSupport" placeholder="contact[0].emailCustomerSupport" required>
+                            <label for="emailCustomerSupport" class="col-sm-2 col-form-label">Email hỗ trợ</label>
+                            <span *ngIf="uploadForm.controls['emailCustomerSupport']?.invalid && uploadForm.controls['emailCustomerSupport']?.touched" class="text-danger">Email hỗ trợ là bắt buộc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <div class="form-floating">
+                            <input [(ngModel)]="timeline" name="timeline" type="text" class="form-control" id="Icon2" placeholder="contact[0].timeline" required>
+                            <label for="timeline" class="col-sm-2 col-form-label">Thời gian hoạt động</label>
+                            <span *ngIf="uploadForm.controls['timeline']?.invalid && uploadForm.controls['timelinen']?.touched" class="text-danger">thời gian hoạt động là bắt buộc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit and Reset Buttons -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary me-3" [disabled]="uploadForm.invalid">Cập nhật</button>
+                    <button type="reset" class="btn btn-primary">Hoàn tác</button>
+                </div>
+
+                <!-- Error Message -->
+                <div class="col-md-12 my-3 alert alert-danger" *ngIf="errorMessage">
+                    {{errorMessage}}
+                </div>
+            </form>
+        </div>
+    </div>
+

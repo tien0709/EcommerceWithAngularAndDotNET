@@ -30,7 +30,6 @@ import { ProductModule } from './product/product.module';
       PublicComponent
   ],
     exports: [
-        RouterModule
     ]
 })
 export class PublicModule {

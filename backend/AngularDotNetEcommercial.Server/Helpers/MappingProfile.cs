@@ -9,11 +9,15 @@ namespace AngularDotNetEcommercial.Server.Helpers
         public MappingProfile()
         {
             CreateMap<Product, ProductDto>()
-                .ForMember(d => d.Category, o => o.MapFrom(s => s.Category.Name))
-                .ForMember(d => d.ProductDiscounts, o => o.MapFrom(s => s.ProductDiscounts.Select(g => g.DiscountId)))
-                .ForMember(d=>d.ImageUrl, o=>o.MapFrom<ProductUrlResolver>());
+                .ForMember(d => d.ProductDiscounts, o => o.MapFrom(s => s.ProductDiscounts.Select(g => g.DiscountId))).ReverseMap();
             CreateMap<RegisterDto, User>().ReverseMap();
             CreateMap<LoginResponseDto, User>().ReverseMap();
+            CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<About, AboutDto>().ReverseMap();
+            CreateMap<Contact, ContactDto>().ReverseMap();
+            CreateMap<Blog, BlogDto>().ForMember(dest => dest.UpdateDate, opt => opt.MapFrom(src => src.CreateDate ?? src.UpdateDate)).ReverseMap();
+            CreateMap<CartItem, CartItemDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

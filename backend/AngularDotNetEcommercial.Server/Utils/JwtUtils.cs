@@ -30,7 +30,7 @@ namespace AngularDotNetEcommercial.Server.Utils
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddHours(5);
+            var expires = DateTime.Now.AddHours(2);
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],

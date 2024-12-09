@@ -7,11 +7,13 @@ namespace AngularDotNetEcommercial.Server.Services.Abstraction
 {
     public interface IUserService : IGenericService<User>
     {
-        Task<LoginResponseDto> Authenticate(LoginDto model);
+        Task<LoginResponseDto> AuthenticateAsync(LoginDto model);
 
         Task<string> GetUserRoleAsync(string userId);
 
-        Task Register(RegisterDto model);
+        Task RegisterAsync(RegisterDto model, string id);
+
+        Task<User> GetByIdAsync(string id);
 
     }
 }

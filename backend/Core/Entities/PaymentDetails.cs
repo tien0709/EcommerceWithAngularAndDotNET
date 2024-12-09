@@ -4,7 +4,7 @@ namespace AngularDotNetEcommercial.Core.Entities
 {
     public class PaymentDetails: BaseEntity
     {
-        public int OrderDetailsId { get; set; }
+        public string OrderDetailsId { get; set; } = null!;
         public OrderDetails OrderDetails { get; set; } = null!;
 
         public int Amount { get; set; }

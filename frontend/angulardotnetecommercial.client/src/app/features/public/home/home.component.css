@@ -138,10 +138,10 @@ table {
     opacity: 0;
     transition: opacity 2s;
 }
-
 .banner {
+    filter: brightness(70%); /* Làm tối ảnh bằng cách giảm độ sáng xuống 50% */
+    transition: filter 0.3s ease; /* Thêm hiệu ứng chuyển đổi mượt mà */
 }
-
 .menu-blogs {
     margin-bottom: 10rem;
     opacity: 0;

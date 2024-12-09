@@ -10,9 +10,7 @@ namespace AngularDotNetEcommercial.Infrastructure.Config
         public void Configure(EntityTypeBuilder<Contact> builder)
         {
             builder.Property(x => x.Address).IsRequired();
-            builder.Property(x => x.EmailGeneralInquire).IsRequired();
             builder.Property(x => x.EmailCustomerSupport).IsRequired();
-            builder.Property(x => x.EmailGeneralInquire).IsRequired();
             builder.Property(x => x.PhoneNumber).IsRequired();
             builder.Property(x => x.Timeline).IsRequired();
             builder.Property(x => x.CreateDate).IsRequired();

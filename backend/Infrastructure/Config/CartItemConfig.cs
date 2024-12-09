@@ -12,7 +12,6 @@ namespace AngularDotNetEcommercial.Infrastructure.Config
             builder.Property(x => x.Quantity).IsRequired();
             builder.Property(x => x.CreateDate).IsRequired();
             builder.Property(x => x.ProductId).IsRequired();
-            builder.Property(x => x.ShoppingSessionId).IsRequired();
             builder.Property(x => x.RowVersion).IsRequired().IsRowVersion();
         }
     }

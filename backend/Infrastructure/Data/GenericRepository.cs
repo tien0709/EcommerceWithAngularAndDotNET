@@ -25,12 +25,78 @@ namespace AngularDotNetEcommercial.Backend.Infrastructure.Data
             return await _context.Set<T>().ToListAsync();
         }
 
+        public async Task UpdateAsync(T entity)
+        {
+            try
+            {
+                if (entity == null)
+                {
+                    throw new ArgumentNullException(nameof(entity), "Entity không được null.");
+                }
+
+                _context.Set<T>().Update(entity);
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Cập nhật không thành công.", ex);
+            }
+        }
+
+        public async Task AddAsync(T entity)
+        {
+            try
+            {
+                if (entity == null)
+                {
+                    throw new ArgumentNullException(nameof(entity), "Entity không được null.");
+                }
+
+
+                await _context.Set<T>().AddAsync(entity);
+
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Thêm đối tượng không thành công.", ex);
+            }
+        }
+
+        public async Task DeleteAsync(string id)
+        {
+            try
+            {
+
+                var entity = await _context.Set<T>().FindAsync(id);
+
+
+                if (entity == null)
+                {
+                    throw new InvalidOperationException($"Không tìm thấy đối tượng với ID {id}");
+                }
+
+
+                _context.Set<T>().Remove(entity);
+
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Xóa đối tượng không thành công.", ex);
+            }
+        }
+
+
         public async Task<T> GetEntityWithSpecAsync(ISpecification<T> spec)
         {
             return await ApplySpecification(spec).FirstOrDefaultAsync();
         }
 
-        public async Task<IReadOnlyList<T>> GetListAsync(ISpecification<T> spec)
+        public async Task<IReadOnlyList<T>> GetListAsync(ISpecification<T>? spec)
         {
             return await ApplySpecification(spec).ToListAsync();
         }

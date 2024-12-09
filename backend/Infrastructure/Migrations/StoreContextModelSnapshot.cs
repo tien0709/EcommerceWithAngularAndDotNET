@@ -24,11 +24,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.About", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AboutUs")
                         .IsRequired()
@@ -59,24 +57,16 @@ namespace Infrastructure.Migrations
                     b.Property<string>("UpdateDate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("About");
                 });
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Blog", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Body")
                         .IsRequired()
@@ -92,6 +82,10 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
+                    b.Property<string>("SourceImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -99,31 +93,59 @@ namespace Infrastructure.Migrations
                     b.Property<string>("UpdateDate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Blog");
                 });
 
-            modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.CartItem", b =>
+            modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Cart", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreateDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("UpdateDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.CartItem", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CartId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CreateDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -134,28 +156,23 @@ namespace Infrastructure.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<int>("ShoppingSessionId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UpdateDate")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("CartId");
 
-                    b.HasIndex("ShoppingSessionId");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreateDate")
                         .IsRequired()
@@ -181,11 +198,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Contact", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -196,14 +211,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailCustomerSupport")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EmailFeedback")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EmailGeneralInquire")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -231,11 +238,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Discount", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreateDate")
                         .IsRequired()
@@ -268,13 +273,19 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.OrderDetails", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreateDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -301,21 +312,21 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.OrderItems", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreateDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderDetailsId")
-                        .HasColumnType("int");
+                    b.Property<string>("OrderDetailsId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -337,11 +348,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.PaymentDetails", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
@@ -350,8 +359,9 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderDetailsId")
-                        .HasColumnType("int");
+                    b.Property<string>("OrderDetailsId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Provider")
                         .IsRequired()
@@ -372,22 +382,20 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderDetailsId")
-                        .IsUnique();
+                    b.HasIndex("OrderDetailsId");
 
                     b.ToTable("PaymentDetail");
                 });
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("CategoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreateDate")
                         .IsRequired()
@@ -429,11 +437,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.ProductDiscount", b =>
                 {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("DiscountId")
-                        .HasColumnType("int");
+                    b.Property<string>("DiscountId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ProductId", "DiscountId");
 
@@ -467,41 +475,6 @@ namespace Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-                });
-
-            modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.ShoppingSession", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CreateDate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.Property<string>("UpdateDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<float>("total")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ShoppingSession");
                 });
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.User", b =>
@@ -571,11 +544,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.UserAddress", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -611,11 +582,9 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.UserPayment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AccountNo")
                         .IsRequired()
@@ -754,51 +723,27 @@ namespace Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.About", b =>
-                {
-                    b.HasOne("AngularDotNetEcommercial.Core.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Blog", b =>
-                {
-                    b.HasOne("AngularDotNetEcommercial.Core.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.CartItem", b =>
                 {
+                    b.HasOne("AngularDotNetEcommercial.Core.Entities.Cart", null)
+                        .WithMany("Items")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("AngularDotNetEcommercial.Core.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AngularDotNetEcommercial.Core.Entities.ShoppingSession", "ShoppingSession")
-                        .WithMany()
-                        .HasForeignKey("ShoppingSessionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Product");
-
-                    b.Navigation("ShoppingSession");
                 });
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.OrderItems", b =>
                 {
-                    b.HasOne("AngularDotNetEcommercial.Core.Entities.OrderDetails", "OrderDetails")
-                        .WithMany()
+                    b.HasOne("AngularDotNetEcommercial.Core.Entities.OrderDetails", null)
+                        .WithMany("Items")
                         .HasForeignKey("OrderDetailsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -809,16 +754,14 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("OrderDetails");
-
                     b.Navigation("Product");
                 });
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.PaymentDetails", b =>
                 {
                     b.HasOne("AngularDotNetEcommercial.Core.Entities.OrderDetails", "OrderDetails")
-                        .WithOne("PaymentDetails")
-                        .HasForeignKey("AngularDotNetEcommercial.Core.Entities.PaymentDetails", "OrderDetailsId")
+                        .WithMany()
+                        .HasForeignKey("OrderDetailsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -853,17 +796,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("Discount");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.ShoppingSession", b =>
-                {
-                    b.HasOne("AngularDotNetEcommercial.Core.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.UserAddress", b =>
@@ -939,6 +871,11 @@ namespace Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Cart", b =>
+                {
+                    b.Navigation("Items");
+                });
+
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Category", b =>
                 {
                     b.Navigation("Products");
@@ -951,8 +888,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.OrderDetails", b =>
                 {
-                    b.Navigation("PaymentDetails")
-                        .IsRequired();
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("AngularDotNetEcommercial.Core.Entities.Product", b =>

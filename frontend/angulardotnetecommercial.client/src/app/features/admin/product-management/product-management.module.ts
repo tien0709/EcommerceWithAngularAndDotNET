@@ -2,22 +2,28 @@
 import { CommonModule } from '@angular/common';
 import { AddProductManagementComponent } from './pages/add-product-management/add-product-management.component';
 import { EditProductManagementComponent } from './pages/edit-product-management/edit-product-management.component';
-import { ProductRoutingModule } from '../../public/product/product-routing.module';
+import { RouterLink, RouterModule } from '@angular/router';
+import { ProductManagementComponent } from './product-management.component';
+import { ProductManagementRoutingModule } from './product-management-routing.module';
+import { IndexProductManagementComponent } from './pages/index-product-management/index-product-management.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
     declarations: [
+        ProductManagementComponent,
         EditProductManagementComponent,
-        AddProductManagementComponent
+        AddProductManagementComponent,
+        IndexProductManagementComponent
     ],//sử dụng trong nội bộ module
-  imports: [
-      CommonModule,
-      ProductRoutingModule
+    imports: [
+        FormsModule,
+        ProductManagementRoutingModule,
+        CommonModule
     ],
     exports: [
-        EditProductManagementComponent,
-        AddProductManagementComponent
+        ProductManagementComponent
     ]//sử dụng trong module khác
 })
 export class ProductManagementModule { }

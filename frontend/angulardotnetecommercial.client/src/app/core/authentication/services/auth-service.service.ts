@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+﻿import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from '../../../../environments/environment';
@@ -42,6 +42,22 @@ export class AuthServiceService {
         return this.http.get<any>(environment.apiUrl + '/authorization/getRole').pipe(
             map(response => {
                 return response;
+            })
+        );
+    }
+    isAdmin(): Observable<boolean> {
+        return this.http.get<{ role: string }>(environment.apiUrl + '/authorization/getRole').pipe(
+            map(response => {
+                try {
+                    // Xử lý response.role là JSON string
+                    const roleValue = JSON.parse(response.role);
+                    if (roleValue === null) return false;
+                    // Loại bỏ các dấu ngoặc kép thừa và so sánh
+                    return roleValue.replace(/"/g, '') === 'Admin';
+                } catch (error) {
+                    console.error('Error parsing role:', error);
+                    return false;
+                }
             })
         );
     }

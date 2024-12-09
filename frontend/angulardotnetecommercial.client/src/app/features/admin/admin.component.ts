@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-admin',
@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent {
-
 }

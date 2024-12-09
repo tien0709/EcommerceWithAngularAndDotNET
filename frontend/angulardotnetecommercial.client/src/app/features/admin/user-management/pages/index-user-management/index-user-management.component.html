@@ -1,0 +1,35 @@
+﻿<h2>Danh sách người dùng</h2>
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+        <li class="breadcrumb-item" active>Danh sách người dùng</li>
+    </ol>
+</nav>
+
+<div class="search-bar mb-4">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+</div><!-- End Search Bar -->
+<!--List-->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Email</th>
+            <th scope="col">Số điện thoại</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users" >
+            <th scope="row">1</th>
+            <td>{{user.userName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phoneNumber}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<!--<a class="btn btn-primary" [routerLink]="['/admin/users/update']">Cập nhật người dùng</a>-->

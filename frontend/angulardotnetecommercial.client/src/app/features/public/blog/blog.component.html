@@ -1,23 +1,16 @@
-<main class="content d-flex flex-column align-items-center" lazyLoadObserver>
+﻿<main class="content d-flex flex-column align-items-center" lazyLoadObserver>
     <article class="title-section text-center">
-        <h1 class="text-white title">Blog</h1>
-        <h5>we offer a wide range of products from fashion, electronics, and home appliances.</h5>
+        <h1 class="text-white title">Bài viết</h1>
+        <h5>Chúng tôi cung cấp nhiều loại sản phẩm từ thiết bị, quần áo thể thao đến dụng cụ hỗ trợ, dụng cụ bảo vệ, ...</h5>
     </article>
     <article class="blogs row mt-5">
-        <div class="group-blog col-lg-4 col-md-6 mb-3">
-            <app-blog-card></app-blog-card>
-        </div>
-        <div class="group-blog col-lg-4 col-md-6 mb-3">
-            <app-blog-card></app-blog-card>
-        </div>
-        <div class="group-blog col-lg-4 col-md-6 mb-3">
-            <app-blog-card></app-blog-card>
-        </div>
-        <div class="group-blog col-lg-4 col-md-6 mb-3">
-            <app-blog-card></app-blog-card>
-        </div>
-        <div class="group-blog col-lg-4 col-md-6 mb-3">
-            <app-blog-card></app-blog-card>
+        <div *ngFor="let blog of blogs" class="group-blog col-lg-4 col-md-6 mb-3">
+            <app-blog-card
+            [title]="blog.title"
+            [srcImg]="blog.sourceImage"
+            [time]="blog.updateDate"
+            [body]="blog.body"
+             ></app-blog-card>
         </div>
     </article>
 </main>

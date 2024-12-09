@@ -8,8 +8,12 @@ namespace AngularDotNetEcommercial.Core.Entities
 
         public string UserId { get; set; } = null!;
 
+        public string Email{ get; set; } = null!;
+
+        public string Address { get; set; } = null!;
+
         public float Total { get; set; }
 
-        public PaymentDetails PaymentDetails { get; set; } = null!;
+        public ICollection<OrderItems> Items { get; set; }
     }
 }

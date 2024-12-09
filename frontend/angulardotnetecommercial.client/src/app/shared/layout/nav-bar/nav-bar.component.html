@@ -1,47 +1,44 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center mx-2 mb-2 mb-lg-0 text-decoration-none" [routerLink]="['/']">
-            <img class="bi" width="200" height="80" src="images/logo.png" aria-label="Bootstrap" />
+        <a class="navbar-brand d-flex align-items-center mx-4 mb-2 mb-lg-0 text-decoration-none" [routerLink]="['/']">
+            <img class="bi" width="200" height="80" src="images/logo.png" aria-label="Bootstrap" alt="no image"/>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a [routerLink]="['/admin']" class="nav-link text-white">Dashboard</a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-4">
+                <li class="nav-item" *ngIf="isAdmin">
+                    <a [routerLink]="['/admin']" class="nav-link text-white">Bảng Điều khiển</a>
                 </li>
-                <li class="nav-item">
-                    <a [routerLink]="['/']" class="nav-link text-white">Home</a>
+                <li class="nav-item" [ngClass]="{'active': currentPage === 'Home'}">
+                    <a [routerLink]="['/']" class="nav-link text-white" (click)="changeCurrentPage('Home')">Trang chủ</a>
                 </li>
-                <li class="nav-item">
-                    <a [routerLink]="['/blogs']" class="nav-link text-white">Blogs</a>
+                <li class="nav-item" [ngClass]="{'active': currentPage === 'Blogs'}">
+                    <a [routerLink]="['/blogs']" class="nav-link text-white" (click)="changeCurrentPage('Blogs')">Bài viết</a>
                 </li>
-                <li class="nav-item">
-                    <a [routerLink]="['/products']" class="nav-link text-white">Products</a>
+                <li class="nav-item" [ngClass]="{'active': currentPage === 'Products'}">
+                    <a [routerLink]="['/products']" class="nav-link text-white" (click)="changeCurrentPage('Products')">Sản phẩm</a>
                 </li>
-                <li class="nav-item">
-                    <a [routerLink]="['/contact']" class="nav-link text-white">Contact</a>
+                <li class="nav-item" [ngClass]="{'active': currentPage === 'Contact'}">
+                    <a [routerLink]="['/contact']" class="nav-link text-white" (click)="changeCurrentPage('Contact')">Liên hệ</a>
                 </li>
-                <li class="nav-item">
-                    <a [routerLink]="['/about']" class="nav-link text-white">About</a>
+                <li class="nav-item" [ngClass]="{'active': currentPage === 'About'}">
+                    <a [routerLink]="['/about']" class="nav-link text-white" (click)="changeCurrentPage('About')">Giới thiệu</a>
                 </li>
             </ul>
-            <form class="d-flex col-lg-3 mb-3 mb-lg-0 me-lg-0" role="search">
-                <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-            </form>
             <div class="col-lg-3 ms-5 d-flex text-center">
                 <div *ngIf="isLoggedIn; else login">
-                    <button (click)="logout()" class="btn btn-secondary me-2">Logout</button>
+                    <button (click)="logout()" class="btn btn-secondary me-2">Đăng xuất</button>
                 </div>
 
                 <ng-template #login>
                     <span></span>
-                    <a [routerLink]="['/auth']" class="btn btn-outline-light me-2">Login</a>
+                    <a [routerLink]="['/auth']" class="btn btn-outline-light me-2">Đăng nhập</a>
                 </ng-template>
                 <a [routerLink]="['/cart']" class="btn btn-warning position-relative">
                     <fa-icon [icon]="faShoppingCart"></fa-icon>
-                    <div class="card-no">5</div>
+                    <div *ngIf="isLoggedIn" class="card-no">{{ cartItemCount }} </div>
                 </a>
                 <div *ngIf="isLoggedIn" class="W-100">
                     <span class="ms-5">{{userName}}!</span>

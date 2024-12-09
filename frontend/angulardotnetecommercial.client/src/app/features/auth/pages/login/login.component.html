@@ -1,15 +1,20 @@
 ﻿<main class="login d-flex flex-column align-items-center w-100">
-    <h1 class="text-white">Login</h1>
+    <h1 class="text-white">Đăng nhập</h1>
+
+    <div *ngIf="message$ | async as message" class="alert alert-warning">
+        {{ message }}
+    </div>
+
     <form (ngSubmit)="onSubmit()" class="col-lg-4 col-md-8 px-5 d-flex flex-column align-items-center" #loginForm="ngForm">
         <input type="text" class="rainbow-border mx-auto my-3" [(ngModel)]="username" name="username" placeholder="UserName" required /><!--[()] là binding 2 chiều-->
         <input type="password" class="rainbow-border mx-auto my-3" [(ngModel)]="password" name="password" placeholder="Password" required />
-        <div><a class="ml-5" href="forgotpassword">forgot password?</a></div>
-        <button type="submit" class="btn btn-danger mt-5 mx-auto btn-text px-5 py-2">Login</button>
+        <div><a class="ml-5" href="forgotpassword">quên mật khẩu?</a></div>
+        <button type="submit" class="btn btn-danger mt-5 mx-auto btn-text px-5 py-2">Đăng nhập</button>
         <div *ngIf="errorMessage" class="alert alert-danger">
             {{ errorMessage }}
         </div>
         <div class="d-flex">
-            <div>Not a member?<a class="mr-5" href="/auth/signup">sign up</a></div>
+            <div>không phải thành viên?<a class="mr-5" href="/auth/signup">Đăng kí</a></div>
         </div>
     </form>
 </main>

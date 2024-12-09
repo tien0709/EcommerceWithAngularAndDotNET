@@ -14,75 +14,45 @@
         <table class="table table-striped mt-lg-3 px-0 w-75">
             <thead>
                 <tr>
-                    <th scope="col" class="h5 text-center pt-lg-4 pb-lg-2 category_header mx-auto w-25">
+                    <th scope="col" class="h5 text-center pt-lg-4 pb-lg-2 category_item mx-auto w-25" [ngClass]="{'category_header': categoryIndex === '0'}" (click)="handleCategoryAllButtonClick()">
                         <a>Menu</a>
                     </th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="categoryTableBody" *ngFor="let category of categories">
                 <tr>
-                    <td class="h5 text-center pt-lg-4 pb-lg-2 category_item mx-auto w-25"><a class="text_category">Iphone</a></td>
-                </tr>
-                <tr>
-                    <td class="h5 text-center pt-lg-4 pb-lg-2 category_item mx-auto w-25"><a class="text_category">Ipad</a></td>
-                </tr>
-                <tr>
-                    <td class="h5 text-center pt-lg-4 pb-lg-2 category_item mx-auto w-25"><a class="text_category">Ipod</a></td>
-                </tr>
-                <tr>
-                    <td class="h5 text-center pt-lg-4 pb-lg-2 category_item mx-auto w-25"><a class="text_category">SmartWatch</a></td>
-                </tr>
-                <tr>
-                    <td class="h5 text-center pt-lg-4 pb-lg-2 category_item mx-auto w-25"><a class="text_category">IMac</a></td>
+                    <td class="h5 text-center pt-lg-4 pb-lg-2 category_item mx-auto w-25" (click)="handleCategoryClick(category.id)" [ngClass]="{'category_header': categoryIndex === category.id}"><a class="text_category">{{category.name}}</a></td>
                 </tr>
             </tbody>
         </table>
-    </article>
+</article>
     <article class="category row col-lg-9 col-md-8">
         <div class="menu-slider w-100" #cardproductmenu>
             <section class="menu-slider-products row">
-                <div class="col-lg-4 col-sm-6">
-                    <app-product-card [name]="'Iphone 11'"
-                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                      [srcImg]="'/images/ip11.png'"
-                                      [price]="'$500'"></app-product-card>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <app-product-card [name]="'Iphone 11'"
-                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                      [srcImg]="'/images/ip11.png'"
-                                      [price]="'$500'"></app-product-card>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <app-product-card [name]="'Iphone 12'"
-                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                      [srcImg]="'/images/ip12.png'"
-                                      [price]="'$500'"></app-product-card>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <app-product-card [name]="'Iphone 12'"
-                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                      [srcImg]="'/images/ip12.png'"
-                                      [price]="'$500'"></app-product-card>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <app-product-card [name]="'Iphone 12'"
-                                      [description]="'Some quick example text to build on the card title and make up the bulk of the card\'s content.'"
-                                      [srcImg]="'/images/ip12.png'"
-                                      [price]="'$500'"></app-product-card>
+                <div *ngFor="let product of products" class="col-lg-4 col-sm-6">
+                    <app-product-card [name]="product.name"
+                                      [description]="product.description"
+                                      [srcImg]="product.imageUrl"
+                                      [price]="product.price.toString()"
+                                      [id]="product.id">
+                    </app-product-card>
                 </div>
             </section>
         </div>
-        <nav aria-label="Page navigation example">
+        <nav aria-label=" Page navigation example" class="mt-5">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                <li class="page-item cursor-pointer" [class.disabled]="currentPage === 1">
+                    <a class="page-link" (click)="getPaginatedProducts(currentPage - 1)" tabindex="-1">Previous</a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+
+                <li class="page-item cursor-pointer" *ngFor="let page of [].constructor(totalPages); let i = index">
+                    <a class="page-link" (click)="getPaginatedProducts(i + 1)" [class.active]="currentPage === i + 1">
+                        {{ i + 1 }}
+                    </a>
+                </li>
+
+                <li class="page-item cursor-pointer" [class.disabled]="currentPage === totalPages">
+                    <a class="page-link" (click)="getPaginatedProducts(currentPage + 1)">Next</a>
                 </li>
             </ul>
         </nav>

@@ -1,1 +1,61 @@
-<p>edit-blog-management works!</p>
+﻿
+<h2>Bài viết</h2>
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+        <li class="breadcrumb-item" active>Bài viết</li>
+        <li class="breadcrumb-item" active>Cập nhật</li>
+    </ol>
+</nav>
+
+<div class="card">
+    <div class="card-body">
+        <form #uploadForm="ngForm" (ngSubmit)="onSubmit(uploadForm)" enctype="multipart/form-data">
+            <!-- Name field -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input [(ngModel)]="title" name="title" type="text" class="form-control" id="title" placeholder="blog.title" required>
+                        <label for="title" class="col-sm-2 col-form-label">Tên</label>
+                        <span *ngIf="uploadForm.controls['title']?.invalid && uploadForm.controls['title']?.touched" class="text-danger">Tên là bắt buộc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- body -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <textarea [(ngModel)]="body" name="body" class="form-control" id="body" placeholder="blog.body" required></textarea>
+                        <label for="body" class="col-sm-2 col-form-label">Nội dung</label>
+                        <span *ngIf="uploadForm.controls['body']?.invalid && uploadForm.controls['body']?.touched" class="text-danger">Nội dung là bắt buộc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- image -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-floating">
+                        <input [(ngModel)]="sourceImage" name="sourceImage" type="text" class="form-control" id="sourceImage" placeholder="blog.sourceImage" required>
+                        <label for="sourceImage" class="col-sm-2 col-form-label">Hình ảnh</label>
+                        <span *ngIf="uploadForm.controls['sourceImage']?.invalid && uploadForm.controls['sourceImage']?.touched" class="text-danger">Hình ảnh</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit and Reset Buttons -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary me-3" [disabled]="uploadForm.invalid">Cập nhật</button>
+                <button type="reset" class="btn btn-primary">Hoàn tác</button>
+            </div>
+
+            <!-- Error Message -->
+            <div class="col-md-12 my-3 alert alert-danger" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+        </form>
+    </div>
+</div>
+
+

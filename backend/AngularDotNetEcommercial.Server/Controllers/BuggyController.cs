@@ -36,7 +36,7 @@ namespace AngularDotNetEcommercial.Server.Controllers
         }
 
         [HttpGet("badrequest/{id}")]
-        public ActionResult GetBadRequest(int id)
+        public ActionResult GetBadRequest(string id)
         {
             return BadRequest();
         }

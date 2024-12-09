@@ -4,13 +4,12 @@ namespace AngularDotNetEcommercial.Core.Entities
 {
     public class OrderItems: BaseEntity
     {
-        public int OrderDetailsId { get; set; } 
+        public string OrderDetailsId { get; set; } = null!;
 
-        public int  ProductId { get; set; } 
+        public string  ProductId { get; set; } = null!;
 
-        public Product Product { get; set; } = null!;
+        public Product Product { get; set; }
 
-        public OrderDetails OrderDetails {  get; set; } = null!;
 
     }
 }

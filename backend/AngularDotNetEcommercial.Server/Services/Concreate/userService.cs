@@ -18,36 +18,36 @@ namespace AngularDotNetEcommercial.Server.Services.Concreate
     public class UserService : IUserService
     {
         private readonly StoreContext _context;
-        private readonly IGenericRepository<User> _genericRepository;
+        private readonly IGenericRepository<User> _userRepository;
         private readonly IMapper _autoMapper;
         private readonly IJwtUtils _jwtUtils;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
-        public UserService(StoreContext context, IGenericRepository<User> genericRepository, IMapper autoMapper, IJwtUtils jwtUtils, UserManager<User> userManager, SignInManager<User> signInManager)
+        public UserService(StoreContext context, IGenericRepository<User> userRepository, IMapper autoMapper, IJwtUtils jwtUtils, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             _context = context;
-            _genericRepository = genericRepository;
+            _userRepository = userRepository;
             _autoMapper = autoMapper;
             _jwtUtils = jwtUtils;
             _userManager = userManager;
             _signInManager = signInManager;
         }
 
-        public async Task<LoginResponseDto> Authenticate(LoginDto model)
+        public async Task<LoginResponseDto> AuthenticateAsync(LoginDto model)
         {
             // Tìm người dùng theo tên đăng nhập
             var user = await _userManager.FindByNameAsync(model.UserName);
             if (user == null)
             {
-                throw new Exception("Invalid username or password.");
+                throw new Exception("Tên hoặc mật khẩu không hợp lệ.");
             }
 
             // Kiểm tra mật khẩu
             var isPasswordValid = await _userManager.CheckPasswordAsync(user, model.Password);
             if (!isPasswordValid)
             {
-                throw new Exception("Invalid username or password.");
+                throw new Exception("Tên hoặc mật khẩu không hợp lệ.");
             }
 
             // Lấy thông tin role của người dùng
@@ -68,14 +68,14 @@ namespace AngularDotNetEcommercial.Server.Services.Concreate
         }
 
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _genericRepository.GetAllAsync();
+            return await _userRepository.GetAllAsync();
         }
-        public async Task<User> GetById(string id)
+        public async Task<User> GetByIdAsync(string id)
         {
 
-            return await _genericRepository.GetByIdAsync(id);
+            return await _userRepository.GetByIdAsync(id);
         }
 
         public async Task<string> GetUserRoleAsync(string userId)
@@ -89,14 +89,22 @@ namespace AngularDotNetEcommercial.Server.Services.Concreate
             return null;
         }
 
-        public async Task Register(RegisterDto model)
+        public async Task RegisterAsync(RegisterDto model, string? id)
         {
             if (_context.Users.Any(x => x.UserName == model.UserName))
             {
-                throw new Exception($"Username {model.UserName} already exists.");
+                throw new Exception($"Username {model.UserName} đã tồn tại.");
+            }
+
+            if (_context.Users.Any(x => x.Email == model.Email))
+            {
+                throw new Exception($"Email {model.Email} đã tồn tại.");
             }
 
             var user = _autoMapper.Map<User>(model);
+            if (!string.IsNullOrEmpty(id)) { 
+                user.Id = id;
+            }
 
             var userCreateResult = await _userManager.CreateAsync(user, model.Password);
             if (!userCreateResult.Succeeded)
@@ -113,7 +121,7 @@ namespace AngularDotNetEcommercial.Server.Services.Concreate
             }
         }
 
-        public void Update(int id, User model) { }
-        public void Delete(int id) { }
+        public async Task UpdateAsync(string id, User model) { }
+        public async Task DeleteAsync(string id) {  }
     }
 }

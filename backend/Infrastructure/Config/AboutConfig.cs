@@ -10,7 +10,6 @@ namespace AngularDotNetEcommercial.Infrastructure.Config
         public void Configure(EntityTypeBuilder<About> builder)
         {
             builder.Property(x => x.AboutUs).IsRequired();
-            builder.Property(x => x.UserId).IsRequired();
             builder.Property(x => x.Career).IsRequired();
             builder.Property(x => x.Colaboration).IsRequired();
             builder.Property(x => x.CreateDate).IsRequired();

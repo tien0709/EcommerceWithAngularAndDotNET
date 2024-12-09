@@ -8,6 +8,7 @@ using AngularDotNetEcommercial.Backend.Infrastructure.Data;
 using AutoMapper;
 using AngularDotNetEcommercial.Server.Dtos;
 using AngularDotNetEcommercial.Server.Errors;
+using AngularDotNetEcommercial.Server.Filters;
 
 namespace AngularDotNetEcommercial.Server.Controllers
 {
@@ -28,16 +29,16 @@ namespace AngularDotNetEcommercial.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> getProducts(string? sort, int? CategoryId)
+        public async Task<ActionResult<List<ProductDto>>> getProducts(string? sort, string? CategoryId, int? page, int? pageSize)
         {
-            var spec = new ProductSpecification(sort, CategoryId);
+            var spec = new ProductSpecification(sort, CategoryId, page, pageSize);
             var Products = await _productReposity.GetListAsync(spec);
             var productDtos = Products.Select(product => _mapper.Map<Product, ProductDto>(product)).ToList();
             return Ok(productDtos);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductDto>> getProduct(int id)
+        public async Task<ActionResult<ProductDto>> getProduct(string id)
         {
             var spec = new ProductSpecification(id);
             var Product = await _productReposity.GetEntityWithSpecAsync(spec);
@@ -45,70 +46,85 @@ namespace AngularDotNetEcommercial.Server.Controllers
             {
                 return NotFound(new ApiResponse(404));
             }
-            return _mapper.Map<Product, ProductDto>(Product);
+            var ProductDto = _mapper.Map<Product, ProductDto>(Product);
+            return ProductDto;
         }
 
-        //// GET: ProductsController/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        [HttpDelete("{id}")]
+        [CustomeAuthorization(["User", "Admin"])]
+        public async Task<IActionResult> deleteProduct(string id)
+        {
+            try
+            {
+                // Kiểm tra xem sản phẩm có tồn tại hay không
+                var product = await _productReposity.GetByIdAsync(id); 
 
-        //// POST: ProductsController/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create(IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+                if (product == null)
+                {
+                    return NotFound(new { message = "Sản phẩm không tồn tại." });
+                }
 
-        //// GET: ProductsController/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
+                // Xóa sản phẩm
+                await _productReposity.DeleteAsync(id.ToString());
 
-        //// POST: ProductsController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+                return Ok(new { message = "Xóa thành công." });
+            }
+            catch (Exception ex)
+            {
+                // Trả về mã lỗi 500 khi có lỗi xảy ra
+                return StatusCode(500, new { message = $"Có lỗi xảy ra: {ex.Message}" });
+            }
+        }
 
-        //// GET: ProductsController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        [CustomeAuthorization(["User", "Admin"])]
+        public async Task<IActionResult> addProduct([FromBody] ProductDto product)
+        {
+            try
+            {
+                var product_convert = _mapper.Map<ProductDto, Product>(product);
+                product_convert.CreateDate = DateTime.Now.ToString();
+                await _productReposity.AddAsync(product_convert);
+                return Ok(new { message = "Thêm thành công." });
+            }
+            catch (Exception ex)
+            {
+                // Trả về mã lỗi 500 khi có lỗi xảy ra
+                return StatusCode(500, new { message = $"Có lỗi xảy ra: {ex.Message}" });
+            }
+        }
 
-        //// POST: ProductsController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        [HttpPut]
+        [CustomeAuthorization(["User", "Admin"])]
+        public async Task<IActionResult> updateProduct([FromBody] ProductDto productDto)
+        {
+            try
+            {
+                // Kiểm tra xem sản phẩm có tồn tại hay không
+                var product = await _productReposity.GetByIdAsync(productDto.Id);
+
+                if (product == null)
+                {
+                    return NotFound(new { message = "Sản phẩm không tồn tại." });
+                }
+
+                product.Price = productDto.Price;
+                product.Quantity = productDto.Quantity;
+                product.CategoryId = productDto.CategoryId;
+                product.ImageUrl = productDto.ImageUrl;
+                product.Name = productDto.Name;
+                product.Description = productDto.Description;
+                product.UpdateDate = DateTime.Now.ToString();
+                // Xóa sản phẩm
+                await _productReposity.UpdateAsync(product);
+
+                return Ok(new { message = "Xóa thành công." });
+            }
+            catch (Exception ex)
+            {
+                // Trả về mã lỗi 500 khi có lỗi xảy ra
+                return StatusCode(500, new { message = $"Có lỗi xảy ra: {ex.Message}" });
+            }
+        }
     }
 }

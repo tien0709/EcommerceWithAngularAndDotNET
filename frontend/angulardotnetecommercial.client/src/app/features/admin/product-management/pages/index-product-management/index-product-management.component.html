@@ -1,0 +1,32 @@
+﻿<h2>Sản phẩm</h2>
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+        <li class="breadcrumb-item" active>Sản phẩm</li>
+    </ol>
+</nav>
+
+<div class="search-bar mb-4">
+    <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Nhập tên sản phẩm..." title="">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+    </form>
+</div><!-- End Search Bar -->
+<!--List-->
+<a class="btn btn-success mb-4 w-25" [routerLink]="['/admin/products/add']">Thêm sản phẩm mới</a>
+<div class="list-propduct row">
+    <div *ngIf="message$ | async as message" class="alert alert-success">
+        {{ message }}
+    </div>
+    <div class="card-body col-md-4" *ngFor="let product of products">
+        <div class="card align-items-center">
+            <p class="bg-danger p-2 category">{{product.category.name}}</p>
+            <img src="{{product.imageUrl}}" alt="..." class="w-50">
+            <p class="h5 mt-3 ">{{product.name}}</p>
+            <p class="h3 mt-1">Giá: {{product.price}}</p>
+            <a class="btn btn-primary mb-2 w-50" [routerLink]="['/admin/products/update', product.id]">Cập nhật</a>
+            <a class="btn btn-danger w-50" (click)="deleteProduct(product.id)">Xóa</a>
+        </div>
+    </div>
+</div>
+

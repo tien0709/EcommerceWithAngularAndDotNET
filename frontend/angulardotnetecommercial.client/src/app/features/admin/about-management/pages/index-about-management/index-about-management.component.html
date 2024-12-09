@@ -1,0 +1,66 @@
+﻿
+    <h2>Giới thiệu</h2>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Bảng điều khiển</a></li>
+            <li class="breadcrumb-item" active>Giới thiệu</li>
+        </ol>
+    </nav>
+    <!--List-->
+    <div class="card-body">
+        <div *ngIf="message$ | async as message" class="alert alert-success">
+            {{ message }}
+        </div>
+        <div class="text-center">
+            <div class="card">
+                <div class="row">
+                    <div class="col-sm-12 text-bg-success">
+                        Giới thiệu
+                    </div>
+                </div>
+                <div class="row mb-3 border border-primary p-3">
+                    <div class="col-sm-12">
+                        {{about[0].aboutUs}}
+                    </div>
+                </div>
+                <div class="row text-bg-success">
+                    <div class="col-sm-12 text-bg-success">
+                        Slogan
+                    </div>
+                </div>
+                <div class="row mb-3 border border-primary p-3">
+                    <div class="col-sm-12 ">
+                        {{about[0].feedback}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-bg-success">
+                        Sự nghiệp
+                    </div>
+                </div>
+                <div class="row mb-3 border border-primary p-3">
+                    <div class="col-sm-12">
+                        {{about[0].career}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-bg-success">
+                        Hợp Tác
+                    </div>
+                </div>
+                <div class="row mb-3 border border-primary p-3">
+                    <div class="col-sm-12">
+                        {{about[0].colaboration}}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-12">
+                        <a class="btn btn-primary" [routerLink]="['/admin/about/update']">Cập nhật</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+

@@ -10,13 +10,13 @@ import { UserManagementModule } from './user-management/user-management.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import { CheckoutManagementComponent } from './checkout-management/checkout-management.component';
 
 
 
 @NgModule({
     imports: [
         // to use router outlet
-        RouterModule,
       AdminRoutingModule,
       CommonModule,
       AboutManagementModule,
@@ -28,7 +28,7 @@ import { SharedModule } from '../../shared/shared.module';
       SharedModule
     ],
     declarations: [
-        AdminComponent// to use imported library/module in components
+        AdminComponent,// to use imported library/module in components
     ]
 })
 export class AdminModule { }

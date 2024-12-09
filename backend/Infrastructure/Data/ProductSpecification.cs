@@ -1,5 +1,6 @@
 ﻿using AngularDotNetEcommercial.Core.Entities;
 using AngularDotNetEcommercial.Core.Specification;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,16 @@ namespace AngularDotNetEcommercial.Backend.Infrastructure.Data
 {
     public class ProductSpecification : BaseSpecification<Product>
     {
-        public ProductSpecification(string? sort, int? CategoryId): base(
-            x=>!CategoryId.HasValue||x.CategoryId == CategoryId)
+        public ProductSpecification(string? sort, string? CategoryId, int? page, int? pageSize)
+            :base(x => string.IsNullOrEmpty(CategoryId) || CategoryId == "0" || x.CategoryId == CategoryId)
         {
             //AddIncludes(x=>x.ProductDiscounts);
-            AddIncludes(x => x.Category);
+                AddIncludes(x => x.Category);
+            if (page.HasValue && pageSize.HasValue)
+            {
+                // Đảm bảo truyền vào giá trị kiểu int (không nullable)
+                ApplyPaging((page.Value - 1) * pageSize.Value, 2*pageSize.Value);
+            }
             if (!string.IsNullOrEmpty(sort))
             {
                 switch (sort)
@@ -35,7 +41,7 @@ namespace AngularDotNetEcommercial.Backend.Infrastructure.Data
             }
         }
 
-        public ProductSpecification(int id): base(x=>x.Id == id)
+        public ProductSpecification(string ProductId) : base(x=>x.Id == ProductId)
         {
             //AddIncludes(x => x.ProductDiscounts);
             AddIncludes(x => x.Category);

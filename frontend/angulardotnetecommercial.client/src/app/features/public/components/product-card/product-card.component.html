@@ -1,16 +1,13 @@
-<div #productElement class="menu-product d-flex flex-column align-items-center mx-2 px-2 mt-5">
-    <img class="menu-image" src="{{srcImg}}" loading="lazy" style="width: 50%;" />
-    <section class="">
-        <h3 class="text-white">{{name}}</h3>
-        <p class="menu-description-txt">
-            {{description}}
-        </p>
+﻿<div #productElement class="menu-product d-flex flex-column align-items-center mx-2 px-2 mt-5">
+    <img class="menu-image rounded" src="{{srcImg}}" loading="lazy" style="width: 75%;" />
+    <section class="mt-2 w-75">
+        <h6 class="text-white custome-height">{{name}}</h6>
         <div class="d-flex justify-content-between">
-            <p class="menu-price text-price">{{price}}</p>
-            <div>
-                <a class="btn btn-success text-center mx-auto">Add to Cart</a>
-            </div>
+            <p class="menu-price text-price">{{price}} VNĐ</p>
         </div>
-</section>
+        <div>
+            <a class="btn btn-success text-center mx-auto" (click)="addToCart()">Thêm vào giỏ hàng</a>
+        </div>
+    </section>
 </div>
 
